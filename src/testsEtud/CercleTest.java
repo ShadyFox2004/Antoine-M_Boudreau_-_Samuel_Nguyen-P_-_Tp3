@@ -14,7 +14,10 @@ public class CercleTest
     @Test
     public void testConstructeurInvalide()
     {
-        Assert.assertThrows(FormeException.class, () -> {new Cercle(32);} );
+        Assert.assertThrows(FormeException.class, () ->
+        {
+            new Cercle(32);
+        });
     }
 
     /**
@@ -54,7 +57,7 @@ public class CercleTest
     @Test
     public void testGetCouleur()
     {
-        Assert.assertEquals("vert", new Cercle().getCouleur());                
+        Assert.assertEquals("vert", new Cercle().getCouleur());
     }
 
     /**
