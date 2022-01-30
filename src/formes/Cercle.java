@@ -10,7 +10,7 @@ public class Cercle
     private static final int RAYON_DEFAUT = 10;
     private static final String[] LES_COULEURS = {"rouge", "vert", "bleu", "jaune", "noir", "orange"};
 
-    public static final String COULEUR_DEFAUT = LES_COULEURS[0];
+    public static final String COULEUR_DEFAUT = LES_COULEURS[1];
 
     private int rayon;
     private static String nom = "Cercle";
@@ -35,7 +35,7 @@ public class Cercle
         if (validerRayon(rayon))
         {
             setRayon(rayon);
-            setCouleur("vert");
+            setCouleur(COULEUR_DEFAUT);
         }
         else
         {
