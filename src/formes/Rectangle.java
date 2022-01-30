@@ -1,5 +1,7 @@
 package formes;
 
+import exceptions.FormeException;
+
 public class Rectangle
 {
     public static final int MIN_VAL = 1;
@@ -16,10 +18,17 @@ public class Rectangle
 
     private String couleur;
 
-    public Rectangle(int hauteur, int largeur)
+    public Rectangle(int hauteur, int largeur) throws FormeException
     {
-        setHauteur(hauteur);
-        setLargeur(largeur);
+        if(validerHauteur(hauteur) && validerLargeur(largeur))
+        {
+            setHauteur(hauteur);
+            setLargeur(largeur);
+        }
+        else
+        {
+            throw new FormeException("Les dimension sont invalide");
+        }
     }
 
     /**
@@ -86,10 +95,29 @@ public class Rectangle
         this.couleur = couleur;
     }
 
-
+    /**
+     * Valide la couleur.
+     *
+     * @param couleur couleur a valider.
+     * @return validiter de la couleur.
+     */
     private boolean validerCouleur(String couleur)
     {
         boolean estValide = false;
+
+        if (couleur != null)
+        {
+            couleur = couleur.trim().toLowerCase();     // Netois la valeur en entrer.
+            for (String couleurAValider : LES_COULEURS)
+            {
+                if (couleur.equals(couleurAValider))
+                {
+                    estValide = true;
+                    break;
+                }
+            }
+        }
+
         return estValide;
     }
 
@@ -113,20 +141,18 @@ public class Rectangle
      */
     private static boolean validerHauteur(int hauteur)
     {
-        boolean estValide = false;
-
-        if (hauteur <= MAX_VAL && hauteur >= MIN_VAL)
-        {
-            estValide = true;
-        }
-
-        return estValide;
+        return hauteur <= MAX_VAL && hauteur >= MIN_VAL;
     }
 
+    /**
+     * Valide la largeur.
+     *
+     * @param largeur largeur a valider.
+     * @return validiter de la largeur.
+     */
     private static boolean validerLargeur(int largeur)
     {
-        boolean estValide = false;
-        return estValide;
+        return largeur <= MAX_VAL && largeur >= MIN_VAL;
     }
 
     public boolean equals(Object o)
