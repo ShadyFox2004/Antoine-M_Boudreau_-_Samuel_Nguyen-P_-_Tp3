@@ -48,43 +48,73 @@ public class RectangleTest
         Assert.assertEquals(true, a.equals(b));
     }
 
+    /**
+     * Get couleur doit retourne la couleur rouge. 
+     */
     @Test
-    public void testGetCouleur() {
-
+    public void testGetCouleur()
+    {
+        Assert.assertEquals("rouge", new Rectangle(2, 2).getCouleur());
     }
 
+    /**
+     * Get hauteur doit retourne une valeur de 2
+     */
     @Test
-    public void testGetHauteur() {
-
+    public void testGetHauteur()
+    {
+        Assert.assertEquals(2, new Rectangle(2, 3).getHauteur());
     }
 
+    /**
+     * Get hauteur doit retourne une valeur de 3
+     */
     @Test
-    public void testGetLargeur() {
-
+    public void testGetLargeur()
+    {
+        Assert.assertEquals(3, new Rectangle(2, 3).getLargeur());
     }
 
-    @Test
-    public void testGetNom() {
-
+    /**
+     * Get nom doit retourne "Rectangle"
+     */
+     @Test
+    public void testGetNom() 
+    {
+        Assert.assertEquals("Rectangle", new Rectangle(2, 2).getNom());
     }
 
+    /**
+     * Set couleur doit retourne la couleur rouge lorsque invalide
+     */
     @Test
-    public void testSetCouleur() {
+    public void testSetCouleurInvalide()
+    {
+        Rectangle o = new Rectangle(2,3);
 
+        o.setCouleur("couleur");
+        Assert.assertEquals("rouge", o.getCouleur());
     }
 
+    /**
+     * Set couleur valide doit assigner la couleur
+     */
     @Test
-    public void testSetHauteur() {
+    public void testSetCouleurValide()
+    {
+        Rectangle o = new Rectangle(2,3);
 
+        o.setCouleur("bleu");
+        Assert.assertEquals("bleu", o.getCouleur());
     }
 
+    /**
+     * toString  doit retourne:
+     * Rectangle rouge 2, 2
+     */
     @Test
-    public void testSetLargeur() {
-
-    }
-
-    @Test
-    public void testToString() {
-
+    public void testToString()
+    {
+        Assert.assertEquals("Rectangle rouge 2, 2", new Rectangle(2, 2).toString());
     }
 }
