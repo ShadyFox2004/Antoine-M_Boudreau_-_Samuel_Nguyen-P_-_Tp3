@@ -13,20 +13,28 @@ public class Cercle
     public static final String COULEUR_DEFAUT = LES_COULEURS[0];
 
     private int rayon;
-    private String nom;
+    private static String nom = "Cercle";
     private String couleur;
 
-    public Cercle() throws FormeException
+    /**
+     * Cree un cercle par defaut.
+     */
+    public Cercle()
     {
-        this(RAYON_DEFAUT);
+        this(RAYON_DEFAUT); // C'est impossible que ca plante.
     }
 
+    /**
+     * Cree un cercle
+     * 
+     * @param rayon rayon
+     * @throws FormeException Lorsque le rayon depasse les bornes.
+     */
     public Cercle(int rayon) throws FormeException
     {
         if (validerRayon(rayon))
         {
             setRayon(rayon);
-            this.nom = "Cercle";
             setCouleur("vert");
         }
         else
@@ -49,7 +57,7 @@ public class Cercle
     /**
      * Calcul la surface.
      *
-     * @return Surface.
+     * @return Surface ou air.
      */
     public int calculerSurface()
     {
@@ -86,9 +94,9 @@ public class Cercle
      *
      * @return nom
      */
-    public String getNom()
+    public static String getNom()
     {
-        return this.nom;
+        return nom;
     }
 
     /**
@@ -116,7 +124,8 @@ public class Cercle
         if (validerCouleur(couleur))
         {
             couleur = couleur.trim().toLowerCase();
-        } else
+        } 
+        else
         {
             couleur = COULEUR_DEFAUT;
         }

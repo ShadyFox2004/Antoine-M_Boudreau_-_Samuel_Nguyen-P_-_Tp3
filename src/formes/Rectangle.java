@@ -11,19 +11,24 @@ public class Rectangle
     public static final String COULEUR_DEFAUT = LES_COULEURS[0];
 
     private int hauteur;
-
     private int largeur;
-
     private static String nom = "Rectangle";
-
     private String couleur;
 
+    /**
+     * Cree un rectangle.
+     * 
+     * @param hauteur hauteur
+     * @param largeur largeur
+     * @throws FormeException Lorsque les dimension depasse les bornes.
+     */
     public Rectangle(int hauteur, int largeur) throws FormeException
     {
         if(validerHauteur(hauteur) && validerLargeur(largeur))
         {
             setHauteur(hauteur);
             setLargeur(largeur);
+            setCouleur(COULEUR_DEFAUT);
         }
         else
         {
@@ -51,41 +56,76 @@ public class Rectangle
         return hauteur*largeur;
     }
 
+    /**
+     * Accede la hauteur
+     *
+     * @return hauteur
+     */
     public int getHauteur()
     {
         return hauteur;
     }
 
+    /**
+     * Accede la largeur
+     *
+     * @return largeur
+     */
     public int getLargeur()
     {
         return largeur;
     }
 
-    public String getNom()
+     /**
+     * Accede le nom
+     *
+     * @return nom
+     */
+    public static String getNom()
     {
         return nom;
     }
 
+    /**
+     * Accede la couleur
+     *
+     * @return nom
+     */
     public String getCouleur()
     {
         return couleur;
     }
 
+    /**
+     * Set la hauteur
+     * 
+     * @param hauteur La nouvelle hauteur
+     */
     public void setHauteur(int hauteur)
     {
         this.hauteur = hauteur;
     }
 
+     /**
+     * Set la largeur
+     * 
+     * @param hauteur La nouvelle largeur
+     */
     public void setLargeur(int largeur)
     {
         this.largeur = largeur;
     }
 
+    /**
+     * Set la couleur
+     *
+     * @param couleur La nouvelle couleur
+     */
     public void setCouleur(String couleur)
     {
-        if(validerCouleur(couleur))
+        if (validerCouleur(couleur))
         {
-
+            couleur = couleur.trim().toLowerCase();
         }
         else
         {
@@ -155,10 +195,11 @@ public class Rectangle
         return largeur <= MAX_VAL && largeur >= MIN_VAL;
     }
 
+    @Override
     public boolean equals(Object o)
     {
-        return o instanceof Rectangle &&
-            ((Rectangle)o).calculerSurface() == calculerSurface() &&
-            ((Rectangle)o).couleur.equals(couleur);
+        return o instanceof Rectangle
+            && couleur.equals(((Rectangle) o).getCouleur())
+            && calculerSurface() == ((Rectangle) o).calculerSurface();
     }
 }
