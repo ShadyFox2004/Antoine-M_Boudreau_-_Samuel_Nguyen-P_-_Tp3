@@ -1,136 +1,150 @@
 package testsEtud;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import exceptions.FormeException;
 import formes.Cercle;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class CercleTest
 {
-    /**
-     * Cercle doit retourne une FormeException lorsque les parametre sont invalide.
-     */
-    @Test
-    public void testConstructeurInvalide()
+    private static final int MIN_VAL = 1;
+    private static final int MAX_VAL = 30;
+
+    private Cercle c1, c2, c3, c4;
+
+    @Before
+    public void setUp() throws Exception
     {
-        Assert.assertThrows(FormeException.class, () ->
+        c1 = new Cercle();
+        c2 = new Cercle(1);
+        c3 = new Cercle(30);
+        c4 = new Cercle(10);
+    }
+
+    @Test
+    public void invalide()
+    {
+        try
         {
-            new Cercle(32);
-        });
+            new Cercle(1 - 1);
+            // Plus petit que minimum
+            fail("Carte invalide");
+        } catch (FormeException e)
+        {
+        }
+
+        try
+        {
+            new Cercle(30 + 1);
+            // Plus grand que maximum
+            fail("Carte invalide");
+        } catch (FormeException e)
+        {
+        }
     }
 
-    /**
-     * Perimetre doit retourne une valeur de 25 lorsque le rayon est 4
-     */
     @Test
-    public void testCalculerPerimetre()
+    public void calculerPerimetre()
     {
-        Assert.assertEquals(25, new Cercle(4).calculerPerimetre());
+        assertEquals((int) (10 * 2 * Math.PI), c1.calculerPerimetre(), 0);
+        assertEquals((int) (1 * 2 * Math.PI), c2.calculerPerimetre(), 0);
+        assertEquals((int) (30 * 2 * Math.PI), c3.calculerPerimetre(), 0);
+        assertEquals((int) (10 * 2 * Math.PI), c4.calculerPerimetre(), 0);
     }
 
-    /**
-     * Surface doit retourne une valeur 50 lorsque le rayon est de 4
-     */
     @Test
-    public void testCalculerSurface()
+    public void calculerSurface()
     {
-        Assert.assertEquals(50, new Cercle(4).calculerSurface());
+        assertEquals((int) (Math.pow(10, 2) * Math.PI), c1.calculerSurface(), 0);
+        assertEquals((int) (Math.pow(1, 2) * Math.PI), c2.calculerSurface(), 0);
+        assertEquals((int) (Math.pow(30, 2) * Math.PI), c3.calculerSurface(), 0);
+        assertEquals((int) (Math.pow(10, 2) * Math.PI), c4.calculerSurface(), 0);
     }
 
-    /**
-     * Equals doit retourne vrai lorsque les deux objet comparer sont de meme couleur et surface;
-     */
     @Test
     public void testEquals()
     {
-        Cercle a = new Cercle(2);
-        Cercle b = new Cercle(2);
+        assertFalse(c1.equals(null));
+        assertFalse(c2.equals("Cercle"));
 
-
-        Assert.assertEquals(true, a.equals(b));
+        assertFalse(c1.equals(c2));
+        c4.setCouleur("bleu");
+        assertFalse(c1.equals(c4));
+        assertFalse(c1.equals(c2));
+        c3.setCouleur("orange");
+        assertFalse(c1.equals(c3));
+        
+        c4.setCouleur(c1.getCouleur());
+        assertTrue(c1.equals(c4));
     }
 
-    /**
-     * Get couleur doit retourne une valeur vert lorsque le cercle est par defaut
-     */
     @Test
-    public void testGetCouleur()
+    public void getCouleur()
     {
-        Assert.assertEquals("vert", new Cercle().getCouleur());
+        assertEquals("vert", c1.getCouleur());
+        assertEquals("vert", c2.getCouleur());
+        assertEquals("vert", c3.getCouleur());
+        assertEquals("vert", c4.getCouleur());
     }
 
-    /**
-     * Le nom retourne doit etre "Cercle"
-     */
     @Test
-    public void testGetNom()
+    public void getNom()
     {
-        Assert.assertEquals("Cercle", new Cercle().getNom());
+        assertEquals("Cercle", c1.getNom());
+        assertEquals("Cercle", c2.getNom());
+        assertEquals("Cercle", c3.getNom());
+        assertEquals("Cercle", c4.getNom());
     }
 
-    /**
-     * Le rayon par defaut doit etre 10
-     */
     @Test
-    public void testGetRayon()
+    public void getRayon()
     {
-        Assert.assertEquals(10, new Cercle().getRayon());
+        assertEquals(10, c1.getRayon());
+        assertEquals(1, c2.getRayon());
+        assertEquals(30, c3.getRayon());
+        assertEquals(10, c4.getRayon());
     }
 
-    /**
-     * J'ai aucune idee pourquoi il y a un main ici
-     */
     @Test
-    public void testMain()
+    public void setCouleur()
     {
+        c1.setCouleur("rouge");
+        c2.setCouleur(" orange ");
+        c3.setCouleur(" NoIR ");
+        
+        c4.setCouleur("blanc");
+
+        assertEquals("rouge", c1.getCouleur());
+        assertEquals("orange", c2.getCouleur());
+        assertEquals("noir", c3.getCouleur());
+        assertEquals("vert", c4.getCouleur());
+
     }
 
-
-    /**
-     * Set couleur doit assgner la couleur par defaut lorsque invalide.
-     */
     @Test
-    public void testSetCouleurInvalide()
+    public void setRayon()
     {
-        Cercle o = new Cercle();
+        c1.setRayon(0);
+        assertEquals(10, c1.getRayon());
+        c2.setRayon(30+1);
+        c3.setRayon(3);
+        c4.setRayon(23);
+        
 
-        o.setCouleur("Ble u");
-        Assert.assertEquals("vert", o.getCouleur());
+        assertEquals(1, c2.getRayon());
+        assertEquals(3, c3.getRayon());
+        assertEquals(23, c4.getRayon());
     }
 
-    /**
-     * setCouleur doit assigner la couleur loursqu'elle est valide.
-     */
-    @Test
-    public void testSetCouleurValide()
-    {
-        Cercle o = new Cercle();
-
-        o.setCouleur("  BleU      ");
-        Assert.assertEquals("bleu", o.getCouleur());
-    }
-
-    /**
-     * setRayon doit assigner le rayon.
-     */
-    @Test
-    public void testSetRayon()
-    {
-        Cercle o = new Cercle();
-
-        o.setRayon(20);
-        Assert.assertEquals(20, o.getRayon());
-    }
-
-    /**
-     * Doit retourne un message sous cette forme:
-     * nom couleur rayon
-     * Ex: Cercle vert 10
-     */
     @Test
     public void testToString()
     {
-        Assert.assertEquals("Cercle vert 10", new Cercle().toString());
+        assertEquals("Cercle vert 10", c1.toString());
+        assertEquals("Cercle vert 1", c2.toString());
+        assertEquals("Cercle vert 30", c3.toString());
+        c4.setCouleur("bleu");
+        assertEquals("Cercle bleu 10", c4.toString());
     }
 }
