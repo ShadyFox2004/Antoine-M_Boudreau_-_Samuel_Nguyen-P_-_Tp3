@@ -128,7 +128,7 @@ public class Rectangle {
      * @param couleur couleur a valider.
      * @return validiter de la couleur.
      */
-    private boolean validerCouleur(String couleur) {
+    static private boolean validerCouleur(String couleur) {
         boolean estValide = false;
 
         if (couleur != null) {

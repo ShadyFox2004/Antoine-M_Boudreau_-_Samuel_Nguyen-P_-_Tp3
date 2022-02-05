@@ -144,7 +144,7 @@ public class Cercle {
      * @param couleur couleur a valider.
      * @return validiter de la couleur.
      */
-    private boolean validerCouleur(String couleur) {
+    private static boolean validerCouleur(String couleur) {
         boolean estValide = false;
 
         if (couleur != null) {
