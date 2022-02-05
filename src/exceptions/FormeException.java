@@ -4,12 +4,12 @@ public class FormeException extends RuntimeException
 {
     public FormeException()
     {
-        this("Rien de plus a dire.");
+        this("FormeException");
     }
 
     public FormeException(String message)
     {
-        System.err.println("FormeException:" + message);
+        super(message);
     }
 
 }

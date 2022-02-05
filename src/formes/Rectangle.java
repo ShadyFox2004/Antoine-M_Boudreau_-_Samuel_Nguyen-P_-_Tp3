@@ -2,8 +2,7 @@ package formes;
 
 import exceptions.FormeException;
 
-public class Rectangle
-{
+public class Rectangle {
     public static final int MIN_VAL = 1;
     public static final int MAX_VAL = 30;
 
@@ -17,21 +16,17 @@ public class Rectangle
 
     /**
      * Cree un rectangle.
-     * 
+     *
      * @param hauteur hauteur
      * @param largeur largeur
      * @throws FormeException Lorsque les dimension depasse les bornes.
      */
-    public Rectangle(int hauteur, int largeur) throws FormeException
-    {
-        if(validerHauteur(hauteur) && validerLargeur(largeur))
-        {
+    public Rectangle(int hauteur, int largeur) throws FormeException {
+        if (validerHauteur(hauteur) && validerLargeur(largeur)) {
             setHauteur(hauteur);
             setLargeur(largeur);
             setCouleur(COULEUR_DEFAUT);
-        }
-        else
-        {
+        } else {
             throw new FormeException("Les dimension sont invalide");
         }
     }
@@ -41,9 +36,8 @@ public class Rectangle
      *
      * @return perimetre.
      */
-    public int calculerPerimetre()
-    {
-        return hauteur*2 + largeur*2;
+    public int calculerPerimetre() {
+        return hauteur * 2 + largeur * 2;
     }
 
     /**
@@ -51,9 +45,8 @@ public class Rectangle
      *
      * @return surface ou air.
      */
-    public int calculerSurface()
-    {
-        return hauteur*largeur;
+    public int calculerSurface() {
+        return hauteur * largeur;
     }
 
     /**
@@ -61,8 +54,7 @@ public class Rectangle
      *
      * @return hauteur
      */
-    public int getHauteur()
-    {
+    public int getHauteur() {
         return hauteur;
     }
 
@@ -71,18 +63,16 @@ public class Rectangle
      *
      * @return largeur
      */
-    public int getLargeur()
-    {
+    public int getLargeur() {
         return largeur;
     }
 
-     /**
+    /**
      * Accede le nom
      *
      * @return nom
      */
-    public static String getNom()
-    {
+    public static String getNom() {
         return nom;
     }
 
@@ -91,29 +81,30 @@ public class Rectangle
      *
      * @return nom
      */
-    public String getCouleur()
-    {
+    public String getCouleur() {
         return couleur;
     }
 
     /**
      * Set la hauteur
-     * 
+     *
      * @param hauteur La nouvelle hauteur
      */
-    public void setHauteur(int hauteur)
-    {
-        this.hauteur = hauteur;
+    public void setHauteur(int hauteur) {
+        if(validerHauteur(hauteur)) {
+            this.hauteur = hauteur;
+        }
     }
 
-     /**
+    /**
      * Set la largeur
-     * 
-     * @param hauteur La nouvelle largeur
+     *
+     * @param largeur La nouvelle largeur
      */
-    public void setLargeur(int largeur)
-    {
-        this.largeur = largeur;
+    public void setLargeur(int largeur) {
+        if(validerLargeur(largeur)) {
+            this.largeur = largeur;
+        }
     }
 
     /**
@@ -121,14 +112,10 @@ public class Rectangle
      *
      * @param couleur La nouvelle couleur
      */
-    public void setCouleur(String couleur)
-    {
-        if (validerCouleur(couleur))
-        {
+    public void setCouleur(String couleur) {
+        if (validerCouleur(couleur)) {
             couleur = couleur.trim().toLowerCase();
-        }
-        else
-        {
+        } else {
             couleur = COULEUR_DEFAUT;
         }
 
@@ -141,17 +128,13 @@ public class Rectangle
      * @param couleur couleur a valider.
      * @return validiter de la couleur.
      */
-    private boolean validerCouleur(String couleur)
-    {
+    private boolean validerCouleur(String couleur) {
         boolean estValide = false;
 
-        if (couleur != null)
-        {
+        if (couleur != null) {
             couleur = couleur.trim().toLowerCase();     // Netois la valeur en entrer.
-            for (String couleurAValider : LES_COULEURS)
-            {
-                if (couleur.equals(couleurAValider))
-                {
+            for (String couleurAValider : LES_COULEURS) {
+                if (couleur.equals(couleurAValider)) {
                     estValide = true;
                     break;
                 }
@@ -168,9 +151,8 @@ public class Rectangle
      * @return information du rectangle.
      */
     @Override
-    public String toString()
-    {
-        return nom + " " + couleur + " " + hauteur +", " +  largeur;
+    public String toString() {
+        return nom + " " + couleur + " " + hauteur + ", " + largeur;
     }
 
     /**
@@ -179,8 +161,7 @@ public class Rectangle
      * @param hauteur hauteur a valider.
      * @return validiter de la hauteur.
      */
-    private static boolean validerHauteur(int hauteur)
-    {
+    private static boolean validerHauteur(int hauteur) {
         return hauteur <= MAX_VAL && hauteur >= MIN_VAL;
     }
 
@@ -190,16 +171,14 @@ public class Rectangle
      * @param largeur largeur a valider.
      * @return validiter de la largeur.
      */
-    private static boolean validerLargeur(int largeur)
-    {
+    private static boolean validerLargeur(int largeur) {
         return largeur <= MAX_VAL && largeur >= MIN_VAL;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         return o instanceof Rectangle
-            && couleur.equals(((Rectangle) o).getCouleur())
-            && calculerSurface() == ((Rectangle) o).calculerSurface();
+                && couleur.equals(((Rectangle) o).getCouleur())
+                && calculerSurface() == ((Rectangle) o).calculerSurface();
     }
 }

@@ -2,8 +2,7 @@ package formes;
 
 import exceptions.FormeException;
 
-public class Cercle
-{
+public class Cercle {
     private static final int MIN_VAL = 1;
     private static final int MAX_VAL = 30;
 
@@ -19,26 +18,21 @@ public class Cercle
     /**
      * Cree un cercle par defaut.
      */
-    public Cercle()
-    {
+    public Cercle() {
         this(RAYON_DEFAUT); // C'est impossible que ca plante.
     }
 
     /**
      * Cree un cercle
-     * 
+     *
      * @param rayon rayon
      * @throws FormeException Lorsque le rayon depasse les bornes.
      */
-    public Cercle(int rayon) throws FormeException
-    {
-        if (validerRayon(rayon))
-        {
+    public Cercle(int rayon) throws FormeException {
+        if (validerRayon(rayon)) {
             setRayon(rayon);
             setCouleur(COULEUR_DEFAUT);
-        }
-        else
-        {
+        } else {
             throw new FormeException("Le rayon est invalide");
         }
     }
@@ -48,8 +42,7 @@ public class Cercle
      *
      * @return Perimetre.
      */
-    public int calculerPerimetre()
-    {
+    public int calculerPerimetre() {
         // P = Pi*r*2
         return (int) (Math.PI * (double) rayon * 2.0);
     }
@@ -59,8 +52,7 @@ public class Cercle
      *
      * @return Surface ou air.
      */
-    public int calculerSurface()
-    {
+    public int calculerSurface() {
         // A = Pi*r^2
         return (int) (Math.PI * (double) rayon * (double) rayon);
     }
@@ -72,8 +64,7 @@ public class Cercle
      * @return le resultat
      */
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         return o instanceof Cercle &&
                 ((Cercle) o).calculerSurface() == calculerSurface() &&
                 ((Cercle) o).couleur.equals(couleur);
@@ -84,8 +75,7 @@ public class Cercle
      *
      * @return couleur.
      */
-    public String getCouleur()
-    {
+    public String getCouleur() {
         return this.couleur;
     }
 
@@ -94,8 +84,7 @@ public class Cercle
      *
      * @return nom
      */
-    public static String getNom()
-    {
+    public static String getNom() {
         return nom;
     }
 
@@ -104,13 +93,11 @@ public class Cercle
      *
      * @return rayon
      */
-    public int getRayon()
-    {
+    public int getRayon() {
         return rayon;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
     }
 
@@ -119,14 +106,10 @@ public class Cercle
      *
      * @param couleur La nouvelle couleur
      */
-    public void setCouleur(String couleur)
-    {
-        if (validerCouleur(couleur))
-        {
+    public void setCouleur(String couleur) {
+        if (validerCouleur(couleur)) {
             couleur = couleur.trim().toLowerCase();
-        } 
-        else
-        {
+        } else {
             couleur = COULEUR_DEFAUT;
         }
 
@@ -138,9 +121,10 @@ public class Cercle
      *
      * @param rayon Le nouveau rayon
      */
-    public void setRayon(int rayon)
-    {
-        this.rayon = rayon;
+    public void setRayon(int rayon) {
+        if (validerRayon(rayon)) {
+            this.rayon = rayon;
+        }
     }
 
     /**
@@ -150,8 +134,7 @@ public class Cercle
      * @return information du cerlce.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return nom + " " + couleur + " " + rayon;
     }
 
@@ -161,17 +144,13 @@ public class Cercle
      * @param couleur couleur a valider.
      * @return validiter de la couleur.
      */
-    private boolean validerCouleur(String couleur)
-    {
+    private boolean validerCouleur(String couleur) {
         boolean estValide = false;
 
-        if (couleur != null)
-        {
+        if (couleur != null) {
             couleur = couleur.trim().toLowerCase();     // Netois la valeur en entrer.
-            for (String couleurAValider : LES_COULEURS)
-            {
-                if (couleur.equals(couleurAValider))
-                {
+            for (String couleurAValider : LES_COULEURS) {
+                if (couleur.equals(couleurAValider)) {
                     estValide = true;
                     break;
                 }
@@ -187,8 +166,7 @@ public class Cercle
      * @param rayon rayon a valider.
      * @return validiter du rayon.
      */
-    private static boolean validerRayon(int rayon)
-    {
+    private static boolean validerRayon(int rayon) {
         return rayon <= MAX_VAL && rayon >= MIN_VAL;
     }
 }
