@@ -133,10 +133,9 @@ public class Rectangle {
 
         if (couleur != null) {
             couleur = couleur.trim().toLowerCase();     // Netois la valeur en entrer.
-            for (String couleurAValider : LES_COULEURS) {
-                if (couleur.equals(couleurAValider)) {
+            for (int current = 0; current < LES_COULEURS.length && estValide == false; current++) {
+                if (couleur.equals(LES_COULEURS[current])) {
                     estValide = true;
-                    break;
                 }
             }
         }
