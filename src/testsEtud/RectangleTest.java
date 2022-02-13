@@ -1,11 +1,10 @@
 package testsEtud;
 
 import exceptions.FormeException;
+import formes.Couleur;
 import formes.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.function.Function;
 
 import static org.junit.Assert.*;
 
@@ -141,32 +140,6 @@ public class RectangleTest {
     }
 
     @Test
-    public void getNom() {
-        assertEquals(Rectangle.getNom(), r1.getNom());
-        assertEquals(Rectangle.getNom(), r2.getNom());
-        assertEquals(Rectangle.getNom(), r3.getNom());
-        assertEquals(Rectangle.getNom(), r4.getNom());
-        assertEquals(Rectangle.getNom(), r5.getNom());
-        assertEquals(Rectangle.getNom(), r6.getNom());
-        assertEquals(Rectangle.getNom(), r7.getNom());
-        assertEquals(Rectangle.getNom(), r8.getNom());
-        assertEquals(Rectangle.getNom(), r9.getNom());
-    }
-
-    @Test
-    public void getCouleur() {
-        assertEquals(Rectangle.COULEUR_DEFAUT, r1.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r2.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r3.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r4.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r5.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r6.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r7.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r8.getCouleur());
-        assertEquals(Rectangle.COULEUR_DEFAUT, r9.getCouleur());
-    }
-
-    @Test
     public void setHauteur() {
         r1.setHauteur(Rectangle.MIN_VAL - 1);
         assertEquals(Rectangle.MIN_VAL, r1.getHauteur());
@@ -215,46 +188,21 @@ public class RectangleTest {
     }
 
     @Test
-    public void setCouleur() {
-        r1.setCouleur(" v a r");
-        assertEquals(Rectangle.COULEUR_DEFAUT,r1.getCouleur());
-        r2.setCouleur(" lol ");
-        assertEquals(Rectangle.COULEUR_DEFAUT, r2.getCouleur());
-        r3.setCouleur("RoUge");
-        assertEquals(Rectangle.LES_COULEURS[0], r3.getCouleur());
-
-        r4.setCouleur("   Jaune  ");
-        assertEquals(Rectangle.LES_COULEURS[3], r4.getCouleur());
-        r5.setCouleur("  nOir         ");
-        assertEquals(Rectangle.LES_COULEURS[4], r5.getCouleur());
-        r6.setCouleur("mauve");
-        assertEquals(Rectangle.COULEUR_DEFAUT, r6.getCouleur());
-
-        r7.setCouleur("orange");
-        assertEquals(Rectangle.LES_COULEURS[5], r7.getCouleur());
-        r8.setCouleur("Orage");
-        assertEquals(Rectangle.COULEUR_DEFAUT, r8.getCouleur());
-        r9.setCouleur(" Yellow ");
-        assertEquals(Rectangle.COULEUR_DEFAUT, r9.getCouleur());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("Rectangle rouge 1, 1", r1.toString());
         assertEquals("Rectangle rouge 1, 13",r2.toString());
-        r3.setCouleur("vert");
-        assertEquals("Rectangle vert 1, 30", r3.toString());
+        assertEquals("Rectangle rouge 1, 30", r3.toString());
         assertEquals("Rectangle rouge 13, 1", r4.toString());
     }
 
     @Test
     public void testEquals() {
-        assertFalse(r1.equals(null));
-        assertFalse(r2.equals(new Object()));
-        assertTrue(r3.equals(r7));
-        r4.setCouleur("bleu");
-        assertFalse(r4.equals(r2));
-        assertFalse(r5.equals(r4));
-        assertFalse(r1.equals(r9));
+        assertNotEquals(null, r1);
+        assertNotEquals(r2, new Object());
+        assertEquals(r3, r7);
+        r4.setCouleur(Couleur.BLEU);
+        assertNotEquals(r4, r2);
+        assertNotEquals(r5, r4);
+        assertNotEquals(r1, r9);
     }
 }
