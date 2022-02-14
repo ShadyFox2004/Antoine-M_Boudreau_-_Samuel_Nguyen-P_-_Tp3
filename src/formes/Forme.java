@@ -1,5 +1,10 @@
 package formes;
 
+/**
+ * Une forme  est un objet fini.
+ * Elle possede un nom et une couleur.
+ * @author Antoine-Matis Boudreau
+ */
 public abstract class Forme implements Comparable<Forme>{
     /**
      * Valeur minimum.
@@ -54,7 +59,7 @@ public abstract class Forme implements Comparable<Forme>{
     }
 
     /**
-     * Change le nom
+     * Modifie le nom
      *
      * @param nom Nouveau nom
      */
@@ -74,9 +79,8 @@ public abstract class Forme implements Comparable<Forme>{
     /**
      * Compare deux Formes
      * // TODO Implementer pour vrai
-     * -1 si inferieur, 0 si egal, 1 si superieur.
-     * @param o
-     * @return
+     * @param o La forme a compare
+     * @return -1 si inferieur, 0 si egal, 1 si superieur.
      */
     @Override
     public int compareTo(Forme o) {
