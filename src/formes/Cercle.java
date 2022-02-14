@@ -88,7 +88,7 @@ public class Cercle extends Forme {
      */
     @Override
     public String toString() {
-        return getNom() + " " + getCouleur() + " " + rayon;
+        return super.toString() + " " + rayon;
     }
 }
  

@@ -1,0 +1,125 @@
+@startuml
+class testsEtud.FormeTest {
++ void getNom()
++ void getCouleur()
++ void setNom()
++ void setCouleur()
++ void compareTo()
++ void testEquals()
++ void calculerSurface()
++ void calculerPerimetre()
+}
+class utilitaires.Utilitaires {
++ {static} int alea(int,int)
+}
+class exceptions.FormeException {
++ <<Create>> FormeException()
++ <<Create>> FormeException(String)
+}
+abstract class formes.Forme {
++ {static} int MIN_VAL
++ {static} int MAX_VAL
++ {static} Couleur COULEUR_DEFAUT
+- Couleur couleur
+- String nom
++ <<Create>> Forme(String)
++ String getNom()
++ Couleur getCouleur()
++ void setNom(String)
++ void setCouleur(Couleur)
++ int compareTo(Forme)
++ boolean equals(Object)
++ {abstract}int calculerSurface()
++ {abstract}int calculerPerimetre()
++ String toString()
+}
+class formes.Rectangle {
+- int hauteur
+- int largeur
++ <<Create>> Rectangle(int,int)
++ int getHauteur()
++ int getLargeur()
++ void setHauteur(int)
++ void setLargeur(int)
+- {static} boolean validerHauteur(int)
+- {static} boolean validerLargeur(int)
++ int calculerPerimetre()
++ int calculerSurface()
++ String toString()
+}
+class applications.ApplicationAmusante {
+- {static} int MIN_VAL
+- {static} int MAX_VAL
++ {static} void bienvenu()
++ {static} Object choisirForme()
++ {static} void chercherSurfaceCercle(Cercle)
++ {static} void chercherPerimetreCercle(Cercle)
++ {static} void chercherSurfaceRectangle(Rectangle)
++ {static} void checherPerimetreRectangle(Rectangle)
++ {static} void main(String[])
+}
+class testsEtud.RectangleTest {
+- Rectangle r1
++ void setUp()
++ void invalide()
++ void calculerPerimetre()
++ void calculerSurface()
++ void getHauteur()
++ void getLargeur()
++ void setHauteur()
++ void setLargeur()
++ void testToString()
++ void testEquals()
+}
+class utilitaires.Output {
++ {static} void afficherMessage(String)
++ {static} void afficherMessage(String,String)
+}
+class testsEtud.CercleTest {
+- {static} int RAYON_DEFAUT
+- Cercle c1
++ void setUp()
++ void invalide()
++ void calculerPerimetre()
++ void calculerSurface()
++ void getRayon()
++ void setRayon()
++ void testToString()
+}
+class formes.Cercle {
+- int rayon
++ <<Create>> Cercle(int)
++ int getRayon()
++ void setRayon(int)
+- {static} boolean validerRayon(int)
++ int calculerPerimetre()
++ int calculerSurface()
++ String toString()
+}
+enum formes.Couleur {
++  ROUGE
++  VERT
++  BLEU
++  JAUNE
++  NOIR
++  ORANGE
+- String nom
+- <<Create>> Couleur(String)
++ String getNom()
+- void setNom(String)
++ String toString()
+}
+class utilitaires.Input {
++ {static} Integer saisirEntier(String)
++ {static} Integer saisirEntier(String,String)
++ {static} String saisirString(String)
++ {static} int confirmerMessage(String)
++ {static} int confirmerMessage(String,String)
+}
+
+
+exceptions.RuntimeException <|-- exceptions.FormeException
+formes.Comparable <|.. formes.Forme
+formes.Forme <|-- formes.Rectangle
+formes.Forme <|-- formes.Cercle
+@enduml

@@ -33,49 +33,49 @@ public class RectangleTest {
         try {
             new Rectangle(Rectangle.MIN_VAL - 1, Rectangle.MIN_VAL - 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(Rectangle.MIN_VAL - 1, 12);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(Rectangle.MIN_VAL - 1, Rectangle.MAX_VAL + 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(19, Rectangle.MIN_VAL - 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(34, Rectangle.MAX_VAL + 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(Rectangle.MAX_VAL + 1, Rectangle.MIN_VAL - 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(Rectangle.MAX_VAL + 1, 12);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
 
         try {
             new Rectangle(Rectangle.MAX_VAL + 1, Rectangle.MAX_VAL + 1);
             fail("Rectangle invalide");
-        } catch (FormeException e) {
+        } catch (FormeException ignored) {
         }
     }
 

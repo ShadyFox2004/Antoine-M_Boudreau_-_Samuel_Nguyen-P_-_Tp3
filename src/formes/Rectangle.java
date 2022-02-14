@@ -125,6 +125,6 @@ public class Rectangle extends Forme  {
      */
     @Override
     public String toString() {
-        return getNom() + " " + getCouleur() + " " + getHauteur() + ", " + getLargeur();
+        return super.toString() + " " + getHauteur() + ", " + getLargeur();
     }
 }
