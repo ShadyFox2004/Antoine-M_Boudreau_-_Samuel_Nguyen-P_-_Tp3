@@ -3,13 +3,13 @@ package formes;
 import exceptions.FormeException;
 
 /**
- * Un cercle est une forme.
+ * Un cercle est une forme à un côté.
  *
- * @author ambou
+ * @author Antoine-Matis Boudreau
  */
 public class Cercle extends Forme {
     /**
-     * Un cercle comporte un rayon
+     * attribut rayon, un entier entre 1 et 30 cm
      */
     private int rayon;
 
@@ -29,9 +29,9 @@ public class Cercle extends Forme {
     }
 
     /**
-     * Accede le rayon
+     * Accesseur de l'attribut rayon
      *
-     * @return rayon
+     * @return La valeur du rayon
      */
     public int getRayon() {
         return rayon;
@@ -55,11 +55,11 @@ public class Cercle extends Forme {
      * @return validiter du rayon.
      */
     private static boolean validerRayon(int rayon) {
-        return rayon <= MAX_VAL && rayon >= MIN_VAL;
+        return rayon >= MIN_VAL && rayon <= MAX_VAL ;
     }
 
     /**
-     * Calcul le perimetre.
+     * Calcul le perimêtre.
      *
      * @return Perimetre.
      */
@@ -84,7 +84,7 @@ public class Cercle extends Forme {
      * Retourne l’information de l’objet sous cette forme : nom couleur rayon
      * ex : Cercle vert 10
      *
-     * @return information du cerlce.
+     * @return information du cercle.
      */
     @Override
     public String toString() {

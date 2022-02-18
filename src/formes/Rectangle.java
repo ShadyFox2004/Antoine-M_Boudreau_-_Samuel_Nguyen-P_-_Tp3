@@ -3,18 +3,19 @@ package formes;
 import exceptions.FormeException;
 
 /**
- * Une rectangle est une forme
+ * Un rectangle est une forme
  *
- * @author ambou
+ * @author Antoine-Matis Boudreau
  */
 public class Rectangle extends Forme  {
+
     /**
-     * Un rectangle a une hauteur
+     * attribut hauteur, un entier entre 1 et 30 cm
      */
     private int hauteur;
 
     /**
-     * Un rectangle a une largeur
+     * attribut largeur, un entier entre 1 et 30 cm
      */
     private int largeur;
 
@@ -28,7 +29,6 @@ public class Rectangle extends Forme  {
     public Rectangle(int hauteur, int largeur) throws FormeException {
         super("Rectangle");
         if (validerHauteur(hauteur) && validerLargeur(largeur)) {
-
             setHauteur(hauteur);
             setLargeur(largeur);
         } else {
@@ -37,27 +37,27 @@ public class Rectangle extends Forme  {
     }
 
     /**
-     * Accede la hauteur
+     * Accesseur de l'attribut hauteur
      *
-     * @return hauteur
+     * @return La valeur de la hauteur
      */
     public int getHauteur() {
         return hauteur;
     }
 
     /**
-     * Accede la largeur
+     * Accesseur de l'attribut largeur
      *
-     * @return largeur
+     * @return La valeur de la largeur
      */
     public int getLargeur() {
         return largeur;
     }
 
     /**
-     * Set la hauteur
+     * Modifie la valeur de la hauteur si valide.
      *
-     * @param hauteur La nouvelle hauteur
+     * @param hauteur : la valeur est entre 1 et 30
      */
     public void setHauteur(int hauteur) {
         if(validerHauteur(hauteur)) {
@@ -66,9 +66,9 @@ public class Rectangle extends Forme  {
     }
 
     /**
-     * Set la largeur
+     * Modifie la valeur de la largeur si valide.
      *
-     * @param largeur La nouvelle largeur
+     * @param largeur : la valeur est entre 1 et 30
      */
     public void setLargeur(int largeur) {
         if(validerLargeur(largeur)) {

@@ -1,11 +1,22 @@
 package testsEtud;
 
+import formes.Forme;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Antoine-Matis Boudreau
+ */
 public class FormeTest {
+    private Forme t1, t2, t3;
+    private Forme c1, c2, c3;
+    private Forme r1, r2, r3;
+
+    @Before
+    public void setup() {
+    }
 
     @Test
     public void getNom() {

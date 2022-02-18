@@ -50,9 +50,9 @@ public abstract class Forme implements Comparable<Forme>{
     }
 
     /**
-     * Accede la couleur
+     * Accesseur de l'attribut couleur
      *
-     * @return couleur
+     * @return La valeur de la couleur
      */
     public Couleur getCouleur() {
         return couleur;

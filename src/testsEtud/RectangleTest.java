@@ -8,8 +8,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
-
+/**
+ * @author Antoine-Matis Boudreau
+ */
 public class RectangleTest {
     private Rectangle r1, r2, r3, r4, r5, r6, r7, r8, r9;
 
@@ -193,16 +194,5 @@ public class RectangleTest {
         assertEquals("Rectangle rouge 1, 13",r2.toString());
         assertEquals("Rectangle rouge 1, 30", r3.toString());
         assertEquals("Rectangle rouge 13, 1", r4.toString());
-    }
-
-    @Test
-    public void testEquals() {
-        assertNotEquals(null, r1);
-        assertNotEquals(r2, new Object());
-        assertEquals(r3, r7);
-        r4.setCouleur(Couleur.BLEU);
-        assertNotEquals(r4, r2);
-        assertNotEquals(r5, r4);
-        assertNotEquals(r1, r9);
     }
 }

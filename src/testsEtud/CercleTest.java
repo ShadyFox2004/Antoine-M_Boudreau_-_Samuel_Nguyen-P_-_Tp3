@@ -9,6 +9,9 @@ import static formes.Forme.MAX_VAL;
 import static formes.Forme.MIN_VAL;
 import static org.junit.Assert.*;
 
+/**
+ * @author Antoine-Matis Boudreau
+ */
 public class CercleTest {
 
     private static final int RAYON_DEFAUT = 10;
