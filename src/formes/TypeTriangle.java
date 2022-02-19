@@ -6,10 +6,10 @@ package formes;
  * @author Antoine-Matis Boudreau
  */
 public enum TypeTriangle {
-    ISOCELE("isocele"),
-    EQUILATERAL("equilateral"),
+    ISOCELE("isocèle"),
+    EQUILATERAL("équilatéral"),
     RECTANGLE("rectangle"),
-    SCALENE("scalene");
+    SCALENE("scalène");
 
     private String type;
 

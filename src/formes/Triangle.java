@@ -13,17 +13,17 @@ public class Triangle extends Forme{
     /**
      * attribut coteA, un entier entre 1 et 30 cm
      */
-    private int coteA;
+    private final int coteA;
 
     /**
      * attribut coteB, un entier entre 1 et 30 cm
      */
-    private int coteB;
+    private final int coteB;
 
     /**
      * attribut coteC, un entier entre 1 et 30 cm
      */
-    private int coteC;
+    private final int coteC;
 
     /**
      * Constructeur de triangle
@@ -89,9 +89,9 @@ public class Triangle extends Forme{
      * @return vrai si le triangle est possible
      */
     private static boolean estTriangle(int coteA, int coteB, int coteC) {
-        return !(coteA + coteB < coteC ||
-                coteB + coteC < coteA ||
-                coteA + coteC < coteB);
+        return !(coteA + coteB <= coteC ||
+                coteB + coteC <= coteA ||
+                coteA + coteC <= coteB);
     }
 
     /**
