@@ -20,11 +20,12 @@ public class Rectangle extends Forme  {
     private int largeur;
 
     /**
-     * Cree un rectangle.
+     * Crée un rectangle.
      *
      * @param hauteur hauteur
      * @param largeur largeur
-     * @throws FormeException Lorsque les dimension depasse les bornes.
+     *
+     * @throws FormeException Lorsque les dimensions dépassent les bornes.
      */
     public Rectangle(int hauteur, int largeur) throws FormeException {
         super("Rectangle");

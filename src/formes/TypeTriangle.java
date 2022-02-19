@@ -13,7 +13,7 @@ public enum TypeTriangle {
 
     private String type;
 
-    private TypeTriangle(String type) {
+    TypeTriangle(String type) {
         setType(type);
     }
 

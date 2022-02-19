@@ -1,5 +1,10 @@
 package formes;
 
+/**
+ * Un triangle est une forme à trois côtés.
+ *
+ * @author Antoine-Matis Boudreau
+ */
 public enum Couleur {
     ROUGE("rouge"),
     VERT("vert"),
@@ -18,7 +23,7 @@ public enum Couleur {
      *
      * @param nom nom de la couleur
      */
-    private Couleur(String nom){
+    Couleur(String nom){
         setNom(nom);
     }
 
@@ -51,6 +56,4 @@ public enum Couleur {
     public String toString() {
         return nom;
     }
-
-
 }

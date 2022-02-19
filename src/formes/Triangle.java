@@ -10,7 +10,6 @@ import java.util.Arrays;
  * @author Antoine-Matis Boudreau
  */
 public class Triangle extends Forme{
-
     /**
      * attribut coteA, un entier entre 1 et 30 cm
      */
@@ -33,12 +32,12 @@ public class Triangle extends Forme{
      * @param coteB la grandeur du côté B est entre 1 et 30
      * @param coteC la grandeur du côté C est entre 1 et 30
      *
-     * @throws exceptions FormeException si le triangle est invalide ou impossible
+     * @throws FormeException si le triangle est invalide ou impossible
      */
     public Triangle(int coteA, int coteB, int coteC) throws FormeException {
         super("Triangle");
 
-        if (validerCote(coteA) && validerCote(coteB) && validerCote(coteC) && estTriangle(coteA, coteB, coteB)) {
+        if (validerCote(coteA) && validerCote(coteB) && validerCote(coteC) && estTriangle(coteA, coteB, coteC)) {
             this.coteA = coteA;
             this.coteB = coteB;
             this.coteC = coteC;
@@ -90,9 +89,9 @@ public class Triangle extends Forme{
      * @return vrai si le triangle est possible
      */
     private static boolean estTriangle(int coteA, int coteB, int coteC) {
-        return coteA + coteB < coteC ||
+        return !(coteA + coteB < coteC ||
                 coteB + coteC < coteA ||
-                coteA + coteC < coteB;
+                coteA + coteC < coteB);
     }
 
     /**
@@ -101,9 +100,12 @@ public class Triangle extends Forme{
      * @return vrai si c'est le triangle est rectangle
      */
     private boolean estRectangle() {
+        boolean estRectangle = false;
+
+
         int[] cotes = getCotesTries();
 
-        return Math.pow(cotes[2], 2) == Math.pow(cotes[0], 2) + Math.pow(cotes[1], 2);
+        return (int)(Math.pow(cotes[2], 2)) == (int)(Math.pow(cotes[0], 2) + Math.pow(cotes[1], 2));
     }
 
     /**
@@ -130,9 +132,10 @@ public class Triangle extends Forme{
 
         // TODO Valider la methode.
 
-        nbrCoteEgaux += getCoteA() == getCoteB() ? 1 : 0; // si a == b alors +1
-        nbrCoteEgaux += getCoteB() == getCoteC() ? 1 : 0; // si b == a alors +1
-        nbrCoteEgaux += getCoteA() == getCoteC() ? 1 : 0; // si a == c alors +1
+        if(getCoteA() == getCoteB() && getCoteA() == getCoteC())
+            nbrCoteEgaux = 3;
+        else if(getCoteA() == getCoteB() || getCoteA() == getCoteC() || getCoteB() == getCoteC())
+            nbrCoteEgaux = 2;
 
         return nbrCoteEgaux;
     }
@@ -143,16 +146,18 @@ public class Triangle extends Forme{
      * @return Type de triangle
      */
     public TypeTriangle getType() {
-        TypeTriangle type = TypeTriangle.SCALENE;
+        TypeTriangle type;
 
         int nbrCoteEgaux = getNbrCoteEgaux();
-
+        
         if(nbrCoteEgaux == 3) {
             type = TypeTriangle.EQUILATERAL;
         } else if (nbrCoteEgaux == 2) {
             type = TypeTriangle.ISOCELE;
         } else if (estRectangle()) {
             type = TypeTriangle.RECTANGLE;
+        } else {
+            type = TypeTriangle.SCALENE;
         }
 
         return type;
@@ -187,6 +192,6 @@ public class Triangle extends Forme{
      */
     @Override
     public String toString() {
-        return super.toString() + " " + getType().toString() + " " + getCoteA() + ", " + getCoteB() + ", " + getCoteC();
+        return super.toString() + " " + getType() + " " + getCoteA() + ", " + getCoteB() + ", " + getCoteC();
     }
 }
