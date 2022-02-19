@@ -2,11 +2,7 @@ package formes;
 
 import exceptions.FormeException;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
-import static formes.Forme.MAX_VAL;
-import static formes.Forme.MIN_VAL;
 
 /**
  * Un triangle est une forme à trois côtés.
