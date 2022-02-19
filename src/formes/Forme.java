@@ -1,8 +1,9 @@
 package formes;
 
 /**
- * Une forme  est un objet fini.
- * Elle possede un nom et une couleur.
+ * Une forme est un objet fini.
+ * Elle possède un nom et une couleur.
+ *
  * @author Antoine-Matis Boudreau
  */
 public abstract class Forme implements Comparable<Forme>{
