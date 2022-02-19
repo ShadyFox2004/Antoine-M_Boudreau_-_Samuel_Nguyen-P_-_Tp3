@@ -19,7 +19,7 @@ public enum Couleur {
     private String nom;
 
     /**
-     * Cree une couleur.
+     * Crée une couleur.
      *
      * @param nom nom de la couleur
      */
