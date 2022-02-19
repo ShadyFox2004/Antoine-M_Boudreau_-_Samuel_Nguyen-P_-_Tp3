@@ -116,7 +116,8 @@ public abstract class Forme implements Comparable<Forme>{
     public abstract int calculerPerimetre();
 
     /**
-     * Retourne l'obejet sous format texte.
+     * Retourne l'objet sous format texte.
+     *
      * @return Object
      */
     @Override
