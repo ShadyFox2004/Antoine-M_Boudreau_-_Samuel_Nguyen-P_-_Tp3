@@ -129,9 +129,6 @@ public class Triangle extends Forme{
     private int getNbrCoteEgaux() {
         int nbrCoteEgaux = 0;
 
-
-        // TODO Valider la methode.
-
         if(getCoteA() == getCoteB() && getCoteA() == getCoteC())
             nbrCoteEgaux = 3;
         else if(getCoteA() == getCoteB() || getCoteA() == getCoteC() || getCoteB() == getCoteC())

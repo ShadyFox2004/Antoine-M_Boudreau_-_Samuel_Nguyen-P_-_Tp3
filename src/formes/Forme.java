@@ -30,14 +30,14 @@ public abstract class Forme implements Comparable<Forme>{
     /**
      * Nom de la forme
      */
-    private String nom;
+    private final String nom;
 
     /**
      * Cree une forme
      * @param nom Nom de la forme
      */
     public Forme(String nom) {
-        setNom(nom);
+        this.nom = nom;
         setCouleur(COULEUR_DEFAUT);
     }
 
@@ -60,32 +60,37 @@ public abstract class Forme implements Comparable<Forme>{
     }
 
     /**
-     * Modifie le nom
-     *
-     * @param nom Nouveau nom
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    /**
      * Modifie la couleur
      *
      * @param couleur la nouvelle couleur
      */
     public void setCouleur(Couleur couleur) {
-        this.couleur = couleur;
+        if(couleur != null)
+            this.couleur = couleur;
     }
 
     /**
      * Compare deux Formes
-     * // TODO Implementer pour vrai
+     *
      * @param o La forme a compare
      * @return -1 si inferieur, 0 si egal, 1 si superieur.
+     *
+     * @throws NullPointerException si l'objet est null.
      */
     @Override
-    public int compareTo(Forme o) {
-        return 0;
+    public int compareTo(Forme o) throws NullPointerException {
+        int result = 0;
+
+        if (o != null) {
+            result = getNom().compareTo(o.getNom());
+            if(result == 0) {
+                result = getCouleur().toString().compareTo(o.getCouleur().toString());
+            }
+        } else {
+            throw new NullPointerException();
+        }
+
+        return result;
     }
 
     /**
@@ -97,6 +102,7 @@ public abstract class Forme implements Comparable<Forme>{
     @Override
     public boolean equals(Object o) {
         return o instanceof Forme &&
+                ((Forme) o).getNom().equals(getNom()) &&
                 ((Forme) o).calculerSurface() == calculerSurface() &&
                 ((Forme) o).getCouleur().equals(getCouleur());
     }
