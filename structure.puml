@@ -1,0 +1,166 @@
+@startuml
+class testsEtud.FormeTest {
+- Forme t1
+- Forme c1
+- Forme r1
++ void setUp()
++ void getNom()
++ void getCouleur()
++ void setCouleur()
++ void compareTo()
++ void testEquals()
++ void calculerSurface()
++ void calculerPerimetre()
+}
+class utilitaires.Utilitaires {
++ {static} int alea(int,int)
+}
+abstract class formes.Forme {
++ {static} int MIN_VAL
++ {static} int MAX_VAL
++ {static} Couleur COULEUR_DEFAUT
+- Couleur couleur
+- String nom
++ <<Create>> Forme(String)
++ String getNom()
++ Couleur getCouleur()
++ void setCouleur(Couleur)
++ int compareTo(Forme)
++ boolean equals(Object)
++ {abstract}int calculerSurface()
++ {abstract}int calculerPerimetre()
++ String toString()
+}
+class exceptions.FormeException {
++ <<Create>> FormeException()
++ <<Create>> FormeException(String)
+}
+class formes.Rectangle {
+- int hauteur
+- int largeur
++ <<Create>> Rectangle(int,int)
++ int getHauteur()
++ int getLargeur()
++ void setHauteur(int)
++ void setLargeur(int)
+- {static} boolean validerHauteur(int)
+- {static} boolean validerLargeur(int)
++ int calculerPerimetre()
++ int calculerSurface()
++ String toString()
+}
+class testsEtud.TriangleTest {
+- Triangle t1
++ void setUp()
++ void invalide()
++ void getCoteA()
++ void getCoteB()
++ void getCoteC()
++ void getType()
++ void testToString()
+}
+class applications.ApplicationAmusante {
+- {static} int MIN_VAL
+- {static} int MAX_VAL
++ {static} void bienvenu()
++ {static} Object choisirForme()
++ {static} void chercherSurfaceCercle(Cercle)
++ {static} void chercherPerimetreCercle(Cercle)
++ {static} void chercherSurfaceRectangle(Rectangle)
++ {static} void checherPerimetreRectangle(Rectangle)
++ {static} void main(String[])
+}
+class testsEtud.RectangleTest {
+- Rectangle r1
++ void setUp()
++ void invalide()
++ void calculerPerimetre()
++ void calculerSurface()
++ void getHauteur()
++ void getLargeur()
++ void setHauteur()
++ void setLargeur()
++ void testToString()
+}
+class utilitaires.Output {
++ {static} void afficherMessage(String)
++ {static} void afficherMessage(String,String)
+}
+class formes.Triangle {
+- int coteA
+- int coteB
+- int coteC
++ <<Create>> Triangle(int,int,int)
++ int getCoteA()
++ int getCoteB()
++ int getCoteC()
+- {static} boolean validerCote(int)
+- {static} boolean estTriangle(int,int,int)
+- boolean estRectangle()
+- int[] getCotesTries()
+- int getNbrCoteEgaux()
++ TypeTriangle getType()
++ int calculerSurface()
++ int calculerPerimetre()
++ String toString()
+}
+class testsEtud.CercleTest {
+- {static} int RAYON_DEFAUT
+- Cercle c1
++ void setUp()
++ void invalide()
++ void calculerPerimetre()
++ void calculerSurface()
++ void getRayon()
++ void setRayon()
++ void testToString()
+}
+class formes.Cercle {
+- int rayon
++ <<Create>> Cercle(int)
++ int getRayon()
++ void setRayon(int)
+- {static} boolean validerRayon(int)
++ int calculerPerimetre()
++ int calculerSurface()
++ String toString()
+}
+enum formes.TypeTriangle {
++  ISOCELE
++  EQUILATERAL
++  RECTANGLE
++  SCALENE
+- String type
+~ <<Create>> TypeTriangle(String)
++ String getType()
+- void setType(String)
++ String toString()
+}
+enum formes.Couleur {
++  ROUGE
++  VERT
++  BLEU
++  JAUNE
++  NOIR
++  ORANGE
+- String nom
+~ <<Create>> Couleur(String)
++ String getNom()
+- void setNom(String)
++ String toString()
+}
+class utilitaires.Input {
++ {static} Integer saisirEntier(String)
++ {static} Integer saisirEntier(String,String)
++ {static} String saisirString(String)
++ {static} int confirmerMessage(String)
++ {static} int confirmerMessage(String,String)
+}
+
+
+formes.Comparable <|.. formes.Forme
+exceptions.RuntimeException <|-- exceptions.FormeException
+formes.Forme <|-- formes.Rectangle
+formes.Forme <|-- formes.Triangle
+formes.Forme <|-- formes.Cercle
+@enduml
