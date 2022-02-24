@@ -4,10 +4,7 @@ import formes.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 /**
  * @author Antoine-Matis Boudreau
@@ -108,13 +105,16 @@ public class FormeTest {
         r2.setCouleur(Couleur.ORANGE);
         r3.setCouleur(Couleur.JAUNE);
 
-        Forme[] mesForme = {t1,t2,t3,c1,c2,c3,r1,r2,r3}; // To test the sort behaviour
+        assertEquals(-1, c2.compareTo(c3));
+        assertEquals(1, t2.compareTo(c3));
 
-        Forme[] expectedResult = {c2,c1,c3,r3,r2,r1,t3,t1,t2};
+        try {
+            t3.compareTo(null);
+            fail("Doesn't throw NullPointerException");
+        } catch (NullPointerException ignore) {
+        }
 
-        Arrays.sort(mesForme);
-
-        assertEquals(expectedResult ,mesForme);
+        assertEquals(0, r3.compareTo(r3));
     }
 
     @Test

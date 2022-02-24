@@ -170,4 +170,28 @@ public class TriangleTest {
         assertEquals("Triangle rouge rectangle 12, 5, 13", t7.toString());
         assertEquals("Triangle rouge scalène 29, 16, 30", t8.toString());
     }
+
+    @Test
+    public void calculerSurface() {
+        assertEquals(0, t1.calculerSurface());
+        assertEquals(389, t2.calculerSurface());
+        assertEquals(14, t3.calculerSurface());
+        assertEquals(14, t4.calculerSurface());
+        assertEquals(14, t5.calculerSurface());
+        assertEquals(4, t6.calculerSurface());
+        assertEquals(30, t7.calculerSurface());
+        assertEquals(226, t8.calculerSurface());
+    }
+
+    @Test
+    public void calculerPerimetre() {
+        assertEquals(3, t1.calculerPerimetre());
+        assertEquals(90, t2.calculerPerimetre());
+        assertEquals(61, t3.calculerPerimetre());
+        assertEquals(61, t4.calculerPerimetre());
+        assertEquals(61, t5.calculerPerimetre());
+        assertEquals(10, t6.calculerPerimetre());
+        assertEquals(30, t7.calculerPerimetre());
+        assertEquals(75, t8.calculerPerimetre());
+    }
 }

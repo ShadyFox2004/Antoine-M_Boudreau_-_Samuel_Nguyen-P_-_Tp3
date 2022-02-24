@@ -83,11 +83,17 @@ public abstract class Forme implements Comparable<Forme>{
 
         if (o != null) {
             result = getNom().compareTo(o.getNom());
-            if(result == 0) {
-                result = getCouleur().toString().compareTo(o.getCouleur().toString());
+            if (result == 0) {
+                result = (getCouleur().toString()).compareTo(o.getCouleur().toString());
             }
         } else {
             throw new NullPointerException();
+        }
+
+        if (result < -1) {
+            result = -1;
+        } else if (result > 1) {
+            result = 1;
         }
 
         return result;

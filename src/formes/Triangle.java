@@ -146,13 +146,13 @@ public class Triangle extends Forme{
         TypeTriangle type;
 
         int nbrCoteEgaux = getNbrCoteEgaux();
-        
-        if(nbrCoteEgaux == 3) {
+
+        if (estRectangle()) {
+            type = TypeTriangle.RECTANGLE;
+        } else if (nbrCoteEgaux == 3) {
             type = TypeTriangle.EQUILATERAL;
         } else if (nbrCoteEgaux == 2) {
             type = TypeTriangle.ISOCELE;
-        } else if (estRectangle()) {
-            type = TypeTriangle.RECTANGLE;
         } else {
             type = TypeTriangle.SCALENE;
         }
@@ -169,8 +169,8 @@ public class Triangle extends Forme{
     @Override
     public int calculerSurface() {
         // Formule de heron
-        int s = calculerPerimetre()/2;
-        return (int) Math.sqrt(s*(s-getCoteA())*(s-getCoteB())*(s-getCoteC()));
+        double s = (double) calculerPerimetre() / 2.0;
+        return (int) Math.sqrt(s * (s - (double) getCoteA()) * (s - (double) getCoteB()) * (s - (double) getCoteC()));
     }
 
     /**

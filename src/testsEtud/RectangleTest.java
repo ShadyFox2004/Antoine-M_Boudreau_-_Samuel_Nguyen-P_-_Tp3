@@ -1,12 +1,12 @@
 package testsEtud;
 
 import exceptions.FormeException;
-import formes.Couleur;
 import formes.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * @author Antoine-Matis Boudreau
