@@ -1,4 +1,4 @@
-package testsEtud;
+package tests;
 
 import formes.*;
 import org.junit.Before;
