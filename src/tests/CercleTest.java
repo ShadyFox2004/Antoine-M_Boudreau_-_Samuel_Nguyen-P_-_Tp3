@@ -1,4 +1,4 @@
-package testsEtud;
+package tests;
 
 import exceptions.FormeException;
 import formes.Cercle;
