@@ -1,9 +1,13 @@
 package tests;
 
+import formes.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Classe de test des vecteur:
@@ -11,7 +15,7 @@ import java.util.ArrayList;
  * @author Antoine-Matis Boudreau
  */
 public class VecteurFormeTest {
-    private VecteurForme v1;
+    private VecteurFormes v1;
 
 
     @Before
@@ -19,7 +23,7 @@ public class VecteurFormeTest {
      * Test du constructeur.
      */
     public void setUp() {
-        v1 = new VecteurForme(); 
+        v1 = new VecteurFormes();
         // TODO Determiner les specification de l'object
         // Le constructeur ne leve pas d'exception
         // donc aucun test d'invalidité n'est requis.
@@ -27,12 +31,7 @@ public class VecteurFormeTest {
 
     @Test
     public void getVecteur() {
-        v1.remplir(10);
-
-        ArrayList expected = new ArrayList();
-        v1.getVecteur();
-
-        // TODO Doit donner une array 
+        // TODO Doit donner une array
     }
 
     @Test
@@ -42,8 +41,16 @@ public class VecteurFormeTest {
 
     @Test
     public void remplir() {
-        assertEquals(1,v1.getVecteur().size());
-        // TODO Doit permetre de remplir le vecteur avec les forme manquante
+        v1.remplir(10);
+        assertEquals(10, v1.getVecteur().size());
+        // Doit permetre de remplir le vecteur avec les forme manquante
+
+        try {
+            v1.remplir(-1);
+            fail("Ne doit pas prendre en charge les nombre négatif");
+        } catch (ArrayIndexOutOfBoundsException ignored) {
+
+        }
     }
 
     @Test
