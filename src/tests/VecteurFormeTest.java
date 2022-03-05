@@ -9,12 +9,18 @@ import org.junit.Test;
  * @author Antoine-Matis Boudreau
  */
 public class VecteurFormeTest {
+    private VecteurForme v1;
+
+
     @Before
     /**
      * Test du constructeur.
      */
     public void setUp() {
+        v1 = new VecteurForme(); 
         // TODO Determiner les specification de l'object
+        // Le constructeur ne leve pas d'exception
+        // donc aucun test d'invalidite n'est requis.
     }
 
     @Test
@@ -29,6 +35,7 @@ public class VecteurFormeTest {
 
     @Test
     public void remplir() {
+        assertEquals(1,v1.getVecteur().size());
         // TODO Doit permetre de remplir le vecteur avec les forme manquante
     }
 
