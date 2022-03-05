@@ -33,7 +33,7 @@ public class VecteurFormeTest {
     }
 
     @Test
-    public void toString() {
+    public void testToString() {
         // TODO Doit retourner un chaine string selon les standard etablis
         // TODO FAIL si la chaine retourner est null //Permet d'idiquer si non implementer
     }
