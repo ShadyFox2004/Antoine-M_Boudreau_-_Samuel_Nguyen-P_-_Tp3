@@ -3,6 +3,8 @@ package tests;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * Classe de test des vecteur:
  * Spécification de l'api public.
@@ -20,12 +22,17 @@ public class VecteurFormeTest {
         v1 = new VecteurForme(); 
         // TODO Determiner les specification de l'object
         // Le constructeur ne leve pas d'exception
-        // donc aucun test d'invalidite n'est requis.
+        // donc aucun test d'invalidité n'est requis.
     }
 
     @Test
     public void getVecteur() {
-      // TODO Doit donner une array 
+        v1.remplir(10);
+
+        ArrayList expected = new ArrayList();
+        v1.getVecteur();
+
+        // TODO Doit donner une array 
     }
 
     @Test
