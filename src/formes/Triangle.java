@@ -169,8 +169,8 @@ public class Triangle extends Forme{
     @Override
     public int calculerSurface() {
         // Formule de heron
-        double s = (double) calculerPerimetre() / 2.0;
-        return (int) Math.sqrt(s * (s - (double) getCoteA()) * (s - (double) getCoteB()) * (s - (double) getCoteC()));
+        double s = calculerPerimetre() / 2.0;
+        return (int) Math.sqrt(s * (s - getCoteA()) * (s - getCoteB()) * (s - getCoteC()));
     }
 
     /**
