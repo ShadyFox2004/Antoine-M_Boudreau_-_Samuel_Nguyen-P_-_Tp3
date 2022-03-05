@@ -136,4 +136,11 @@ public abstract class Forme implements Comparable<Forme>{
     public String toString() {
         return nom + " " + couleur;
     }
+
+    /**
+     * Retourne l'objet sous format texte.
+     *
+     * @return Object
+     */
+    public String toStringCourt() { return nom + "" + couleur; }
 }
