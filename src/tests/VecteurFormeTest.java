@@ -5,9 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * Classe de test des vecteur:
@@ -16,34 +16,46 @@ import static org.junit.Assert.fail;
  */
 public class VecteurFormeTest {
     private VecteurFormes v1;
+    private static final int GRANDEUR_DU_VECTEUR = 100;
 
 
-    @Before
+
     /**
      * Test du constructeur.
      */
+    @Before
     public void setUp() {
         v1 = new VecteurFormes();
-        // TODO Determiner les specification de l'object
         // Le constructeur ne leve pas d'exception
         // donc aucun test d'invalidité n'est requis.
     }
 
     @Test
     public void getVecteur() {
-        // TODO Doit donner une array
+        // TODO Doit donner une ArrayList
     }
 
     @Test
     public void melanger() {
-        // TODO Verifier si melanger est asser impredictible.
+        v1.remplir(GRANDEUR_DU_VECTEUR);
+        var previous = (ArrayList<Forme>) v1.getVecteur().clone();
+
+        // System.out.println("previous = " + previous);
+
+        for (int i = 0; i < 100; i++) {
+            // Nous repetons le test plusieur fois pour assure que le bon comportement n'est pas du hazard
+            v1.melanger();
+            // Verifier si melanger est asser impredictible.
+            assertNotEquals(previous, v1.getVecteur());
+            assertEquals(GRANDEUR_DU_VECTEUR, v1.getVecteur().size()); //Le nombre d'objets doit etre le meme
+        }
     }
 
     @Test
     public void remplir() {
-        v1.remplir(10);
-        assertEquals(10, v1.getVecteur().size());
-        // Doit permetre de remplir le vecteur avec les forme manquante
+        v1.remplir(GRANDEUR_DU_VECTEUR);
+        assertEquals(GRANDEUR_DU_VECTEUR, v1.getVecteur().size());
+        // Doit permetre de remplir le vecteur avec les forme demander
 
         try {
             v1.remplir(-1);
@@ -61,6 +73,19 @@ public class VecteurFormeTest {
 
     @Test
     public void trier() {
-        // TODO Doit trier les objects selon les standart etablis
+        v1.remplir(GRANDEUR_DU_VECTEUR);
+
+        for (int i = 0; i < GRANDEUR_DU_VECTEUR; i++) {
+            // Nous repetons le test plusieur fois pour assure que le bon comportement n'est pas du hazard
+            var previous = (ArrayList<Forme>) v1.getVecteur().clone();
+            Collections.sort(previous); // Trie selon l'algorithme de java pour un groupe de control
+
+            v1.trier();// Trie selon l'algorithme implementer
+
+            assertEquals(previous, v1.getVecteur()); // Nous assumons que le trie est exactement egal.
+            assertEquals(GRANDEUR_DU_VECTEUR, v1.getVecteur().size()); //Le nombre d'objets doit etre le meme
+            v1.melanger();
+        }
+
     }
 }

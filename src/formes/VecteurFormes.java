@@ -2,6 +2,8 @@ package formes;
 
 import java.util.ArrayList;
 
+import static utilitaires.Utilitaires.alea;
+
 /**
  * Classe VecteurFormes
  * @author Antoine-Matis Boudreau
@@ -35,7 +37,23 @@ public class VecteurFormes implements ManipulerVecteur {
      */
     @Override
     public void melanger() {
+        ArrayList<Forme> newVecteur = new ArrayList<Forme>();
 
+        while (!vecteur.isEmpty()) {
+            newVecteur.add(vecteur.remove(alea(0,vecteur.size()-1)));
+        }
+
+        vecteur = newVecteur;
+    }
+
+    /**
+     * Permute deux element.
+     *
+     * @param place1 place que tu veux le deuxième.
+     * @param place2 place que tu veux le premier.
+     */
+    private void permuter(int place1, int place2) {
+        vecteur.set(place1, vecteur.set(place2,vecteur.get(place1)));
     }
 
     /**
@@ -46,7 +64,7 @@ public class VecteurFormes implements ManipulerVecteur {
      */
     @Override
     public void remplir(int nombre) {
-        if (nombre > 0) {
+        if (validerNbrFormes(nombre)) {
             // Boucle si le nombre n'est pas encore attain
             while(nombre != 0) for (int type = 0; type < 3 && nombre > 0; type++) //
                 for (int couleur = 0; couleur < Couleur.values().length && nombre > 0; couleur++) {
@@ -74,7 +92,23 @@ public class VecteurFormes implements ManipulerVecteur {
      */
     @Override
     public void trier() {
+        for (int i = 1; i < vecteur.size(); i++) {
+            for (int j = 0; j < vecteur.size() -1; j++) { // - 1 pour eviter le debordement
+                int position  = vecteur.get(j).compareTo(vecteur.get(j+1));
 
+                if (position > 0)
+                    permuter(j+1, j);
+            }
+        }
     }
 
+    /**
+     * Valide si le nombre de formes est valide
+     *
+     * @param nombreDeForme le nombre de forme
+     * @return si le nombre de forme est valide ou non
+     */
+    private static boolean validerNbrFormes(int nombreDeForme) {
+        return nombreDeForme > 0;
+    }
 }
