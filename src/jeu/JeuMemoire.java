@@ -30,7 +30,7 @@ public class JeuMemoire<Point> implements Memorisable
     public static final int NBR_ELEMENTS_GRILLE = LIGNE * COLONNE;
 
     /**
-     * Todo
+     * TODO
      * La longueur de la chaine
      */
     private static final int LONGUEUR_CHAINE = 0;
@@ -151,6 +151,7 @@ public class JeuMemoire<Point> implements Memorisable
     @Override
     public boolean jouerHumain(int x, int y)
     {
+        // TODO test jouerHumain
         return getVecteurPoints().contains(new Point(x, y));
     }
 
@@ -164,52 +165,9 @@ public class JeuMemoire<Point> implements Memorisable
     {
         int pNiveau = getNiveau();
         ArrayList<Point> val = null;
-
-        switch (pNiveau)
-        {
-            case 1:
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-            case 2:
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-            case 3:
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-            case 4:
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-            case 5:
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-            case 6:
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    val.add(choisirForme());
-                }
-            }
-        }
+        for (int i = 0; i < 2 + pNiveau; i++)
+            val.add(choisirForme());               
+        
         return val;
     }
 
@@ -232,33 +190,21 @@ public class JeuMemoire<Point> implements Memorisable
      */
     private Point choisirForme()
     {
-        return new Point(randomNum(), randomNum());
+        return new Point(alea(0, 6), alea(0, 6));
     }
 
     /**
-     * Todo
-     *
+     * 
      * @param nbr
      * @param espace
      * @return
      */
     private String ajouterEspaces(int nbr, String espace)
     {
-
+         // TODO implementer le ajouterEspaces
     }
-
+    
     /**
-     * Retourne une valeur aleatoire entre index 0 et 5 (1 et 6)
-     *
-     * @return numero aleatoire
-     */
-    private int randomNum()
-    {
-        return (int) Math.floor(Math.random() * (5 - 0 + 1) + 0);
-    }
-
-    /**
-     * Todo
      * Retourne toutes les attributs de l'objet
      *
      * @return attributs
@@ -266,6 +212,7 @@ public class JeuMemoire<Point> implements Memorisable
     @Override
     public String toString()
     {
+        // TODO implementer le toString
         return null;
     }
 }
