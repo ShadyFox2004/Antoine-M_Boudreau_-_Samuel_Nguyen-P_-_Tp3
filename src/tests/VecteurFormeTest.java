@@ -79,12 +79,13 @@ public class VecteurFormeTest {
             // Nous repetons le test plusieur fois pour assure que le bon comportement n'est pas du hazard
             var previous = (ArrayList<Forme>) v1.getVecteur().clone();
             Collections.sort(previous); // Trie selon l'algorithme de java pour un groupe de control
-
+            
+            v1.melanger();
             v1.trier();// Trie selon l'algorithme implementer
 
             assertEquals(previous, v1.getVecteur()); // Nous assumons que le trie est exactement egal.
             assertEquals(GRANDEUR_DU_VECTEUR, v1.getVecteur().size()); //Le nombre d'objets doit etre le meme
-            v1.melanger();
+            
         }
 
     }
