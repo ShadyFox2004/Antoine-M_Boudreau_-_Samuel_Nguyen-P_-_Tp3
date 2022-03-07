@@ -1,4 +1,4 @@
-package jeu;
+package formes;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public interface ManipulerVecteur {
      *
      * @return vecteurForme
      */
-    public abstract ArrayList getVecteur();
+    public abstract ArrayList<Forme> getVecteur();
 
     /**
      * Mélange le vecteur selon un algorithme
@@ -25,6 +25,7 @@ public interface ManipulerVecteur {
      * Permet de remplir le vecteur selon le nombre d'objects donnée en paramêtre.
      *
      * @param nombre nombre d'objects données
+     * @throws ArrayIndexOutOfBoundsException si le nombre est plus petit que 0 inclus
      */
     public abstract void remplir(int nombre);
 
