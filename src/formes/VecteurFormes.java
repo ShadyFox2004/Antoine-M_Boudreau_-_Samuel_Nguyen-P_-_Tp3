@@ -111,4 +111,11 @@ public class VecteurFormes implements ManipulerVecteur {
     private static boolean validerNbrFormes(int nombreDeForme) {
         return nombreDeForme > 0;
     }
+
+    @Override
+    public String toString() {
+        return "VecteurFormes{" +
+                "vecteur=" + vecteur +
+                '}';
+    }
 }

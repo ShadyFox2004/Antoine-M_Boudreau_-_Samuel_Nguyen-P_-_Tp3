@@ -32,13 +32,13 @@ public class VecteurFormeTest {
 
     @Test
     public void getVecteur() {
-        // TODO Doit donner une ArrayList
+        assert(v1.getVecteur() instanceof ArrayList<?>);
     }
 
     @Test
     public void melanger() {
         v1.remplir(GRANDEUR_DU_VECTEUR);
-        var previous = (ArrayList<Forme>) v1.getVecteur().clone();
+        ArrayList<Forme> previous = (ArrayList<Forme>) v1.getVecteur().clone();
 
         // System.out.println("previous = " + previous);
 
@@ -77,7 +77,7 @@ public class VecteurFormeTest {
 
         for (int i = 0; i < GRANDEUR_DU_VECTEUR; i++) {
             // Nous repetons le test plusieur fois pour assure que le bon comportement n'est pas du hazard
-            var previous = (ArrayList<Forme>) v1.getVecteur().clone();
+            ArrayList<Forme> previous = (ArrayList<Forme>) v1.getVecteur().clone();
             Collections.sort(previous); // Trie selon l'algorithme de java pour un groupe de control
             
             v1.melanger();

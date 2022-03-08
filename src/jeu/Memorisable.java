@@ -1,6 +1,6 @@
 package jeu;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**

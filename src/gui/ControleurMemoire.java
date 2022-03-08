@@ -66,7 +66,7 @@ public class ControleurMemoire implements ActionListener, Runnable {
                 image = jeu.getNomForme(i, j);
                 vue.boutons[j][i].addActionListener(this);
                 vue.boutons[i][j]
-                        .setIcon(new ImageIcon("images\\" + image + ".png"));
+                        .setIcon(new ImageIcon("images" + ((System.getProperty("os.name").indexOf("Windows") != -1)? "\\" : "/") + image + ".png"));
             }
         }
     }
