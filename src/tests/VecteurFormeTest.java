@@ -32,7 +32,7 @@ public class VecteurFormeTest {
 
     @Test
     public void getVecteur() {
-        // TODO Doit donner une ArrayList
+        assertEquals(true, v1.getVecteur() instanceof ArrayList<?>);
     }
 
     @Test
