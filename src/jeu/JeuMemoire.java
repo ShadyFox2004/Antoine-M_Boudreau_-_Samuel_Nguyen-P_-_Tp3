@@ -3,8 +3,9 @@ package jeu;
 import formes.Forme;
 import formes.VecteurFormes;
 
-import java.awt.*;
 import java.util.ArrayList;
+
+import static utilitaires.Utilitaires.alea;
 
 /**
  * Cette classe represente la gestion du jeu
@@ -65,13 +66,12 @@ public class JeuMemoire<Point> implements Memorisable
     }
 
     /**
-     * Todo
+     * TODO
      * Prepare la grille de jeu
      */
     private void preparerGrilleDeJeu()
     {
         Forme[][] matrice = getGrille();
-
 
 
     }
@@ -161,14 +161,14 @@ public class JeuMemoire<Point> implements Memorisable
      * @return liste de points
      */
     @Override
-    public ArrayList<Point> jouerOrdi()
+    public ArrayList<java.awt.Point> jouerOrdi()
     {
         int pNiveau = getNiveau();
         ArrayList<Point> val = null;
         for (int i = 0; i < 2 + pNiveau; i++)
-            val.add(choisirForme());               
-        
-        return val;
+            val.add(choisirForme());
+
+        return (ArrayList<java.awt.Point>) val;
     }
 
     /**
@@ -194,16 +194,23 @@ public class JeuMemoire<Point> implements Memorisable
     }
 
     /**
-     * 
-     * @param nbr
-     * @param espace
+     * Ajouter des espaces a la fin d'un string recu,
+     * en fonction du nombre recu en parametre
+     *
+     * @param nombre
+     * @param message
      * @return
      */
-    private String ajouterEspaces(int nbr, String espace)
+    private String ajouterEspaces(int nombre, String message)
     {
-         // TODO implementer le ajouterEspaces
+        String espace = null;
+        for (int i = 0; i < nombre; i++)
+        {
+            espace = espace + " ";
+        }
+        return message + espace;
     }
-    
+
     /**
      * Retourne toutes les attributs de l'objet
      *
