@@ -1,3 +1,7 @@
 {
-    "recommendations": []
+    "recommendations": [
+        "gruntfuggly.todo-tree",
+        "vscjava.vscode-java-test",
+        "VisualStudioExptTeam.vscodeintellicode"
+    ]
 }
