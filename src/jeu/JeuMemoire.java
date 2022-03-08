@@ -38,7 +38,7 @@ public class JeuMemoire<Point> implements Memorisable
     private static final int LONGUEUR_CHAINE = 0;
 
     /**
-     * Vecteur Forme
+     * Attributs vecteur forme
      */
     private VecteurFormes vecteurFormes = null;
 
@@ -67,18 +67,6 @@ public class JeuMemoire<Point> implements Memorisable
     }
 
     /**
-     *
-     * Prepare la grille de jeu
-     */
-    private void preparerGrilleDeJeu()
-    {
-        //TODO faire preparer grille de jeu
-        Forme[][] matrice = getGrille();
-
-
-    }
-
-    /**
      * Prepare la liste de Forme
      */
     private void preparerVecteurFormes()
@@ -87,6 +75,27 @@ public class JeuMemoire<Point> implements Memorisable
         vecteurFormes = new VecteurFormes();
         vecteurFormes.remplir(NBR_ELEMENTS_GRILLE);
         vecteurFormes.melanger();
+    }
+
+    /**
+     * Prepare la grille de jeu
+     */
+    private void preparerGrilleDeJeu()
+    {
+        //TODO test prepareGrilleDeJeu
+        Forme[][] matrice = getGrille();
+        matrice = new Forme[LIGNE - 1][COLONNE - 1];
+
+        for (Forme forme : getVecteur().getVecteur())
+        {
+            for (int i = 0; i < matrice.length; i++)
+            {
+                for (int j = 0; j < matrice.length; j++)
+                {
+                    matrice[i][j] = forme;
+                }
+            }
+        }
     }
 
     /**
