@@ -154,7 +154,7 @@ public class JeuMemoire implements Memorisable {
     @Override
     public boolean jouerHumain(int x, int y) {
         // TODO test jouerHumain
-        return vecteurPoints.contains(new java.awt.Point(x, y));
+        return vecteurPoints.contains(new Point(x, y));
     }
 
     /**
@@ -163,20 +163,20 @@ public class JeuMemoire implements Memorisable {
      * @return liste de points
      */
     @Override
-    public ArrayList<java.awt.Point> jouerOrdi() {
+    public ArrayList<Point> jouerOrdi() {
         // TODO test jouerOrdi
 
         // get Niveau courrant du jeu
         int pNiveau = getNiveau();
 
         // return value
-        ArrayList<Point> val = new ArrayList<>();
+        vecteurPoints = new ArrayList<>();
         
         for (int i = 0; i < 2 + pNiveau; i++) {
-            val.add(choisirForme());
+            vecteurPoints.add(choisirForme());
         }
 
-        return (ArrayList<java.awt.Point>) val;
+        return vecteurPoints;
     }
 
     /**
