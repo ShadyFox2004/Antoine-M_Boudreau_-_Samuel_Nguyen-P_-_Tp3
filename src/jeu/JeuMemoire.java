@@ -3,6 +3,7 @@ package jeu;
 import formes.Forme;
 import formes.VecteurFormes;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static utilitaires.Utilitaires.alea;
@@ -31,7 +32,7 @@ public class JeuMemoire<Point> implements Memorisable
     public static final int NBR_ELEMENTS_GRILLE = LIGNE * COLONNE;
 
     /**
-     * TODO
+     * TODO constante logueur chaine
      * La longueur de la chaine
      */
     private static final int LONGUEUR_CHAINE = 0;
@@ -66,11 +67,12 @@ public class JeuMemoire<Point> implements Memorisable
     }
 
     /**
-     * TODO
+     *
      * Prepare la grille de jeu
      */
     private void preparerGrilleDeJeu()
     {
+        //TODO faire preparer grille de jeu
         Forme[][] matrice = getGrille();
 
 
@@ -81,6 +83,7 @@ public class JeuMemoire<Point> implements Memorisable
      */
     private void preparerVecteurFormes()
     {
+        //TODO test preparerVecteurForme
         vecteurFormes = new VecteurFormes();
         vecteurFormes.remplir(NBR_ELEMENTS_GRILLE);
         vecteurFormes.melanger();
@@ -127,6 +130,8 @@ public class JeuMemoire<Point> implements Memorisable
     @Override
     public String getNomForme(int x, int y)
     {
+        //TODO test getNomForme
+
         // plus de memoire mais reduit la complexiter
         Forme[][] array = getGrille();
         Forme temp = array[x][y];
@@ -152,7 +157,7 @@ public class JeuMemoire<Point> implements Memorisable
     public boolean jouerHumain(int x, int y)
     {
         // TODO test jouerHumain
-        return getVecteurPoints().contains(new Point(x, y));
+        return getVecteurPoints().contains(new java.awt.Point(x, y));
     }
 
     /**
@@ -163,6 +168,7 @@ public class JeuMemoire<Point> implements Memorisable
     @Override
     public ArrayList<java.awt.Point> jouerOrdi()
     {
+        //TODO test jouerOrdi
         int pNiveau = getNiveau();
         ArrayList<Point> val = null;
         for (int i = 0; i < 2 + pNiveau; i++)
@@ -190,7 +196,8 @@ public class JeuMemoire<Point> implements Memorisable
      */
     private Point choisirForme()
     {
-        return new Point(alea(0, 6), alea(0, 6));
+        //TODO test choisirForme
+        return (Point) new java.awt.Point(alea(0, 5), alea(0, 5));
     }
 
     /**
@@ -203,6 +210,7 @@ public class JeuMemoire<Point> implements Memorisable
      */
     private String ajouterEspaces(int nombre, String message)
     {
+        //TODO test ajouterEspaces
         String espace = null;
         for (int i = 0; i < nombre; i++)
         {
