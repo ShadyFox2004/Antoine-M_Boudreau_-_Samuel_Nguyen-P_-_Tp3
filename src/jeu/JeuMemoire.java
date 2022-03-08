@@ -32,10 +32,9 @@ public class JeuMemoire<Point> implements Memorisable
     public static final int NBR_ELEMENTS_GRILLE = LIGNE * COLONNE;
 
     /**
-     * TODO constante logueur chaine
      * La longueur de la chaine
      */
-    private static final int LONGUEUR_CHAINE = 0;
+    private static final int LONGUEUR_CHAINE = 17;
 
     /**
      * Attributs vecteur forme
@@ -91,9 +90,7 @@ public class JeuMemoire<Point> implements Memorisable
             for (int i = 0; i < matrice.length; i++)
             {
                 for (int j = 0; j < matrice.length; j++)
-                {
                     matrice[i][j] = forme;
-                }
             }
         }
     }
@@ -237,6 +234,16 @@ public class JeuMemoire<Point> implements Memorisable
     public String toString()
     {
         // TODO implementer le toString
-        return null;
+        String val = null;
+
+        for (int i = 0; i < getGrille().length; i++)
+        {
+            for (int j = 0; j < getGrille().length; j++)
+            {
+                val = getGrille()[i][j].toStringCourt() + "|";
+            }
+            val = "\n";
+        }
+        return val;
     }
 }
