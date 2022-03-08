@@ -225,6 +225,16 @@ public class JeuMemoire<Point> implements Memorisable
         return message + espace;
     }
 
+    public int getNbrEspace(String texte)
+    {
+        int nbr = texte.length();
+        if (nbr != LONGUEUR_CHAINE)
+        {
+            Math.abs(nbr = nbr - LONGUEUR_CHAINE);
+        }
+        return nbr;
+    }
+
     /**
      * Retourne toutes les attributs de l'objet
      *
@@ -233,14 +243,15 @@ public class JeuMemoire<Point> implements Memorisable
     @Override
     public String toString()
     {
-        // TODO implementer le toString
+        // TODO a tester
         String val = null;
 
         for (int i = 0; i < getGrille().length; i++)
         {
             for (int j = 0; j < getGrille().length; j++)
             {
-                val = getGrille()[i][j].toStringCourt() + "|";
+                val = ajouterEspaces(getNbrEspace(getGrille()[i][j].toStringCourt()),
+                        getGrille()[i][j].toStringCourt()) + "|";
             }
             val = "\n";
         }
