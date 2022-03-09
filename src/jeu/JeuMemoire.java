@@ -228,20 +228,24 @@ public class JeuMemoire implements Memorisable
      */
     private String ajouterEspaces(int nombre, String message)
     {
-        String espace = null;
+        String espace = "";
         for (int i = 0; i < nombre; i++)
         {
-            espace = espace + " ";
+            espace += " ";
         }
         return message + espace;
     }
 
+    /**
+     * Retourne le nombre d'espace requis pour atteindre la longueur de la chaine requis
+     * a utiliser avec la methode ajouterEspace()
+     */
     private int getNbrEspace(String texte)
     {
         int nbr = texte.length();
         if (nbr != LONGUEUR_CHAINE)
         {
-            Math.abs(nbr = nbr - LONGUEUR_CHAINE);
+            nbr = Math.abs(nbr -= LONGUEUR_CHAINE);
         }
         return nbr;
     }
@@ -254,18 +258,18 @@ public class JeuMemoire implements Memorisable
     @Override
     public String toString()
     {
-        // TODO a tester
-        String val = null;
+        String out = "";
+        String formeStr = null;
 
         for (int i = 0; i < getGrille().length; i++)
         {
-            for (int j = 0; j < getGrille().length; j++)
+            for (int j = 0; j < getGrille()[i].length; j++)
             {
-                val = ajouterEspaces(getNbrEspace(getGrille()[i][j].toStringCourt()),
-                        getGrille()[i][j].toStringCourt()) + "|";
+                formeStr = getGrille()[i][j].toStringCourt();
+                out += ajouterEspaces(getNbrEspace(formeStr), formeStr) + "|";
             }
-            val = "\n";
+            out += "\n";
         }
-        return val;
+        return out;
     }
 }
