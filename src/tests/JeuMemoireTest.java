@@ -186,6 +186,12 @@ public class JeuMemoireTest
     @Test
     public void testToString()
     {
-
+        /**
+         * 1. Verifier le nombre de charactere
+         * une ligne: (17 + 1) * 6 = 108 + 1 = 109
+         * total: 109 * 6 = 654
+         */
+        assertEquals(654, jeu.toString().length());
+        
     }
 }
