@@ -70,7 +70,6 @@ public class JeuMemoire implements Memorisable
      */
     private void preparerVecteurFormes()
     {
-        // TODO test preparerVecteurForme
         vecteurFormes = new VecteurFormes();
         vecteurFormes.remplir(NBR_ELEMENTS_GRILLE);
         vecteurFormes.melanger();
@@ -81,7 +80,6 @@ public class JeuMemoire implements Memorisable
      */
     private void preparerGrilleDeJeu()
     {
-        // TODO test prepareGrilleDeJeu
         grilleDeJeu = new Forme[LIGNE][COLONNE];
 
         ArrayList<Forme> formes = getVecteur().getVecteur();
@@ -138,8 +136,6 @@ public class JeuMemoire implements Memorisable
     @Override
     public String getNomForme(int x, int y)
     {
-        // TODO test getNomForme
-
         Forme forme = (getGrille())[x][y];
 
         String nom = forme.getNom();
@@ -175,7 +171,6 @@ public class JeuMemoire implements Memorisable
     @Override
     public boolean jouerHumain(int x, int y)
     {
-        // TODO test jouerHumain
         return getVecteurPoints().contains(new Point(x, y));
     }
 
@@ -187,8 +182,6 @@ public class JeuMemoire implements Memorisable
     @Override
     public ArrayList<Point> jouerOrdi()
     {
-        // TODO test jouerOrdi
-
         // get Niveau courrant du jeu
         int pNiveau = getNiveau();
 
@@ -222,7 +215,6 @@ public class JeuMemoire implements Memorisable
      */
     private Point choisirForme()
     {
-        // TODO test choisirForme
         return new Point(alea(0, 5), alea(0, 5));
     }
 
@@ -236,7 +228,6 @@ public class JeuMemoire implements Memorisable
      */
     private String ajouterEspaces(int nombre, String message)
     {
-        // TODO test ajouterEspaces
         String espace = null;
         for (int i = 0; i < nombre; i++)
         {

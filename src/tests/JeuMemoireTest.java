@@ -10,6 +10,8 @@ import formes.Forme;
 import formes.VecteurFormes;
 import jeu.JeuMemoire;
 
+import java.awt.*;
+
 /**
  * Test de la classe JeuMemoire
  *
@@ -106,7 +108,19 @@ public class JeuMemoireTest
     @Test
     public void testJouerHumain()
     {
+        // prendre un point dans la liste en avance et apres tester la methode
 
+        // creer la liste de points
+        jeu.jouerOrdi();
+
+        // point a deviner de la liste
+        Point point = jeu.getVecteurPoints().get(0);
+        Point point2 = jeu.getVecteurPoints().get(1);
+        Point point3 = jeu.getVecteurPoints().get(2);
+
+        assertEquals(true, jeu.jouerHumain((int) point.getX(), (int) point.getY()));
+        assertEquals(true, jeu.jouerHumain((int) point2.getX(), (int) point2.getY()));
+        assertEquals(true, jeu.jouerHumain((int) point3.getX(), (int) point3.getY()));
     }
 
     @Test
