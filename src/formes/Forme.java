@@ -6,8 +6,7 @@ package formes;
  *
  * @author Antoine-Matis Boudreau
  */
-public abstract class Forme implements Comparable<Forme>
-{
+public abstract class Forme implements Comparable<Forme> {
     /**
      * Valeur minimum.
      */
@@ -38,8 +37,7 @@ public abstract class Forme implements Comparable<Forme>
      *
      * @param nom Nom de la forme
      */
-    public Forme(String nom)
-    {
+    public Forme(String nom) {
         this.nom = nom;
         setCouleur(COULEUR_DEFAUT);
     }
@@ -49,8 +47,7 @@ public abstract class Forme implements Comparable<Forme>
      *
      * @return nom
      */
-    public String getNom()
-    {
+    public String getNom() {
         return nom;
     }
 
@@ -59,8 +56,7 @@ public abstract class Forme implements Comparable<Forme>
      *
      * @return La valeur de la couleur
      */
-    public Couleur getCouleur()
-    {
+    public Couleur getCouleur() {
         return couleur;
     }
 
@@ -69,8 +65,7 @@ public abstract class Forme implements Comparable<Forme>
      *
      * @param couleur la nouvelle couleur
      */
-    public void setCouleur(Couleur couleur)
-    {
+    public void setCouleur(Couleur couleur) {
         if (couleur != null)
             this.couleur = couleur;
     }
@@ -83,27 +78,21 @@ public abstract class Forme implements Comparable<Forme>
      * @throws NullPointerException si l'objet est null.
      */
     @Override
-    public int compareTo(Forme o) throws NullPointerException
-    {
+    public int compareTo(Forme o) throws NullPointerException {
         int result = 0;
 
-        if (o != null)
-        {
+        if (o != null) {
             result = getNom().compareTo(o.getNom());
-            if (result == 0)
-            {
+            if (result == 0) {
                 result = (getCouleur().toString()).compareTo(o.getCouleur().toString());
             }
-        } else
-        {
+        } else {
             throw new NullPointerException();
         }
 
-        if (result < -1)
-        {
+        if (result < -1) {
             result = -1;
-        } else if (result > 1)
-        {
+        } else if (result > 1) {
             result = 1;
         }
 
@@ -117,8 +106,7 @@ public abstract class Forme implements Comparable<Forme>
      * @return le resultat
      */
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         return o instanceof Forme &&
                 ((Forme) o).getNom().equals(getNom()) &&
                 ((Forme) o).calculerSurface() == calculerSurface() &&
@@ -145,8 +133,7 @@ public abstract class Forme implements Comparable<Forme>
      * @return Object
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return nom + " " + couleur;
     }
 
@@ -155,8 +142,7 @@ public abstract class Forme implements Comparable<Forme>
      *
      * @return Object
      */
-    public String toStringCourt()
-    {
+    public String toStringCourt() {
         return nom + " " + couleur;
     }
 }

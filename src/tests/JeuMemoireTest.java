@@ -18,38 +18,31 @@ import java.awt.*;
  * @author Antoine-Matis Boudreau
  * @author Samuel Nguyen-Phok
  */
-public class JeuMemoireTest
-{
+public class JeuMemoireTest {
 
     private JeuMemoire jeu;
 
     @Before
-    public void setup()
-    {
+    public void setup() {
         jeu = new JeuMemoire();
         // Pas de test invalide ni plusieur acteurs puisque pas d'argument en entré.
     }
 
     @Test
-    public void getGrille()
-    {
-        try
-        {
+    public void getGrille() {
+        try {
             Forme[][] matrice = jeu.getGrille();
-            if (matrice == null)
-            {
+            if (matrice == null) {
                 throw new NullPointerException();
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             fail("" + jeu.getGrille() + "");
         }
 
     }
 
     @Test
-    public void getNiveau()
-    {
+    public void getNiveau() {
         assertEquals(1, jeu.getNiveau());
         jeu.setNiveauPlusUn();
         assertEquals(2, jeu.getNiveau());
@@ -68,17 +61,14 @@ public class JeuMemoireTest
     }
 
     @Test
-    public void getNomForme()
-    {
+    public void getNomForme() {
 
         Forme[][] matrice = jeu.getGrille();
         // Doit retourner une string formater selon : NomCouleur
-        for (int x = 0; x < matrice.length; x++)
-        {
+        for (int x = 0; x < matrice.length; x++) {
             // Nous repetons le test plusieur fois pour assure que le bon comportement n'est
             // pas du hazard'
-            for (int y = 0; y < matrice.length; y++)
-            {
+            for (int y = 0; y < matrice.length; y++) {
                 // Pour chaques ligne et chaque colone.
 
                 // Tous se processus est pour changer la premiere lettre du nom de la forme et
@@ -88,11 +78,10 @@ public class JeuMemoireTest
                 String nom = forme.getNom();
                 String couleur = forme.getCouleur().toString();
 
-                String expected =
-                        nom.substring(0, 1).toUpperCase() +
-                                nom.substring(1) +
-                                couleur.substring(0, 1).toUpperCase() +
-                                couleur.substring(1);
+                String expected = nom.substring(0, 1).toUpperCase() +
+                        nom.substring(1) +
+                        couleur.substring(0, 1).toUpperCase() +
+                        couleur.substring(1);
 
                 assertEquals(expected, jeu.getNomForme(x, y));
             }
@@ -100,14 +89,12 @@ public class JeuMemoireTest
     }
 
     @Test
-    public void testGetVecteur()
-    {
+    public void testGetVecteur() {
         assertEquals(true, jeu.getVecteur() instanceof VecteurFormes);
     }
 
     @Test
-    public void testJouerHumain()
-    {
+    public void testJouerHumain() {
         // prendre un point dans la liste en avance et apres tester la methode
 
         // creer la liste de points
@@ -124,8 +111,7 @@ public class JeuMemoireTest
     }
 
     @Test
-    public void testJouerOrdi()
-    {
+    public void testJouerOrdi() {
         // Permet de comparer si la liste de point est une copie
         JeuMemoire compare = new JeuMemoire();
 
@@ -166,8 +152,7 @@ public class JeuMemoireTest
     }
 
     @Test
-    public void testSetNiveauPlusUn()
-    {
+    public void testSetNiveauPlusUn() {
         jeu.setNiveauPlusUn();
         assertEquals(2, jeu.getNiveau());
         jeu.setNiveauPlusUn();
@@ -184,14 +169,13 @@ public class JeuMemoireTest
     }
 
     @Test
-    public void testToString()
-    {
+    public void testToString() {
         /**
          * 1. Verifier le nombre de charactere
          * une ligne: (17 + 1) * 6 = 108 + 1 = 109
          * total: 109 * 6 = 654
          */
         assertEquals(654, jeu.toString().length());
-        
+
     }
 }
