@@ -10,6 +10,8 @@ import formes.Forme;
 import formes.VecteurFormes;
 import jeu.JeuMemoire;
 
+import java.awt.*;
+
 /**
  * Test de la classe JeuMemoire
  *
@@ -76,11 +78,10 @@ public class JeuMemoireTest {
                 String nom = forme.getNom();
                 String couleur = forme.getCouleur().toString();
 
-                String expected =
-                    nom.substring(0, 1).toUpperCase() +
-                    nom.substring(1) +
-                    couleur.substring(0, 1).toUpperCase() +
-                    couleur.substring(1);
+                String expected = nom.substring(0, 1).toUpperCase() +
+                        nom.substring(1) +
+                        couleur.substring(0, 1).toUpperCase() +
+                        couleur.substring(1);
 
                 assertEquals(expected, jeu.getNomForme(x, y));
             }
@@ -94,11 +95,59 @@ public class JeuMemoireTest {
 
     @Test
     public void testJouerHumain() {
+        // prendre un point dans la liste en avance et apres tester la methode
 
+        // creer la liste de points
+        jeu.jouerOrdi();
+
+        // point a deviner de la liste
+        Point point = jeu.getVecteurPoints().get(0);
+        Point point2 = jeu.getVecteurPoints().get(1);
+        Point point3 = jeu.getVecteurPoints().get(2);
+
+        assertEquals(true, jeu.jouerHumain((int) point.getX(), (int) point.getY()));
+        assertEquals(true, jeu.jouerHumain((int) point2.getX(), (int) point2.getY()));
+        assertEquals(true, jeu.jouerHumain((int) point3.getX(), (int) point3.getY()));
     }
 
     @Test
     public void testJouerOrdi() {
+        // Permet de comparer si la liste de point est une copie
+        JeuMemoire compare = new JeuMemoire();
+
+        // Creer la liste de points
+        jeu.jouerOrdi();
+        compare.jouerOrdi();
+
+        assertEquals(false, jeu.getVecteurPoints().equals(compare.getVecteurPoints()));
+
+        // Verifie si le nombre de points son les bons en fonction du niveau
+        assertEquals(3, jeu.getVecteurPoints().size());
+
+        jeu.setNiveauPlusUn();
+        jeu.jouerOrdi();
+        assertEquals(2, jeu.getNiveau());
+        assertEquals(4, jeu.getVecteurPoints().size());
+
+        jeu.setNiveauPlusUn();
+        jeu.jouerOrdi();
+        assertEquals(3, jeu.getNiveau());
+        assertEquals(5, jeu.getVecteurPoints().size());
+
+        jeu.setNiveauPlusUn();
+        jeu.jouerOrdi();
+        assertEquals(4, jeu.getNiveau());
+        assertEquals(6, jeu.getVecteurPoints().size());
+
+        jeu.setNiveauPlusUn();
+        jeu.jouerOrdi();
+        assertEquals(5, jeu.getNiveau());
+        assertEquals(7, jeu.getVecteurPoints().size());
+
+        jeu.setNiveauPlusUn();
+        jeu.jouerOrdi();
+        assertEquals(6, jeu.getNiveau());
+        assertEquals(8, jeu.getVecteurPoints().size());
 
     }
 
@@ -121,6 +170,12 @@ public class JeuMemoireTest {
 
     @Test
     public void testToString() {
+        /**
+         * 1. Verifier le nombre de charactere
+         * une ligne: (17 + 1) * 6 = 108 + 1 = 109
+         * total: 109 * 6 = 654
+         */
+        assertEquals(654, jeu.toString().length());
 
     }
 }

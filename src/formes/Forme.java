@@ -6,7 +6,7 @@ package formes;
  *
  * @author Antoine-Matis Boudreau
  */
-public abstract class Forme implements Comparable<Forme>{
+public abstract class Forme implements Comparable<Forme> {
     /**
      * Valeur minimum.
      */
@@ -34,6 +34,7 @@ public abstract class Forme implements Comparable<Forme>{
 
     /**
      * Cree une forme
+     *
      * @param nom Nom de la forme
      */
     public Forme(String nom) {
@@ -65,7 +66,7 @@ public abstract class Forme implements Comparable<Forme>{
      * @param couleur la nouvelle couleur
      */
     public void setCouleur(Couleur couleur) {
-        if(couleur != null)
+        if (couleur != null)
             this.couleur = couleur;
     }
 
@@ -74,7 +75,6 @@ public abstract class Forme implements Comparable<Forme>{
      *
      * @param o La forme a compare
      * @return -1 si inferieur, 0 si egal, 1 si superieur.
-     *
      * @throws NullPointerException si l'objet est null.
      */
     @Override
@@ -142,5 +142,7 @@ public abstract class Forme implements Comparable<Forme>{
      *
      * @return Object
      */
-    public String toStringCourt() { return nom + "" + couleur; }
+    public String toStringCourt() {
+        return nom + " " + couleur;
+    }
 }

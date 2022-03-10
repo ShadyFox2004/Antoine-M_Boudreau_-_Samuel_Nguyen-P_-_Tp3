@@ -67,7 +67,6 @@ public class JeuMemoire implements Memorisable {
      * Prepare la liste de Forme
      */
     private void preparerVecteurFormes() {
-        // TODO test preparerVecteurForme
         vecteurFormes = new VecteurFormes();
         vecteurFormes.remplir(NBR_ELEMENTS_GRILLE);
         vecteurFormes.melanger();
@@ -77,16 +76,15 @@ public class JeuMemoire implements Memorisable {
      * Prepare la grille de jeu
      */
     private void preparerGrilleDeJeu() {
-        // TODO test prepareGrilleDeJeu
         grilleDeJeu = new Forme[LIGNE][COLONNE];
-        
+
         ArrayList<Forme> formes = getVecteur().getVecteur();
-        
+
         int nextForme = 0;
 
         for (int i = 0; i < grilleDeJeu.length; i++) {
             for (int j = 0; j < grilleDeJeu[i].length; j++) {
-                grilleDeJeu[i][j] = formes.get(nextForme++);        
+                grilleDeJeu[i][j] = formes.get(nextForme++);
             }
         }
     }
@@ -128,20 +126,27 @@ public class JeuMemoire implements Memorisable {
      */
     @Override
     public String getNomForme(int x, int y) {
-        // TODO test getNomForme
-
         Forme forme = (getGrille())[x][y];
 
         String nom = forme.getNom();
         String couleur = forme.getCouleur().toString();
 
-        String expected =
-            nom.substring(0, 1).toUpperCase() +
-            nom.substring(1) +
-            couleur.substring(0, 1).toUpperCase() +
-            couleur.substring(1);
+        String expected = nom.substring(0, 1).toUpperCase() +
+                nom.substring(1) +
+                couleur.substring(0, 1).toUpperCase() +
+                couleur.substring(1);
 
         return expected;
+    }
+
+    /**
+     * Retourne le vecteur de point
+     * Note: Utiliser juste pour le test
+     *
+     * @return liste de points
+     */
+    public ArrayList<Point> getVecteurPoints() {
+        return vecteurPoints;
     }
 
     /**
@@ -153,8 +158,7 @@ public class JeuMemoire implements Memorisable {
      */
     @Override
     public boolean jouerHumain(int x, int y) {
-        // TODO test jouerHumain
-        return vecteurPoints.contains(new Point(x, y));
+        return getVecteurPoints().contains(new Point(x, y));
     }
 
     /**
@@ -164,14 +168,12 @@ public class JeuMemoire implements Memorisable {
      */
     @Override
     public ArrayList<Point> jouerOrdi() {
-        // TODO test jouerOrdi
-
         // get Niveau courrant du jeu
         int pNiveau = getNiveau();
 
         // return value
         vecteurPoints = new ArrayList<>();
-        
+
         for (int i = 0; i < 2 + pNiveau; i++) {
             vecteurPoints.add(choisirForme());
         }
@@ -195,7 +197,6 @@ public class JeuMemoire implements Memorisable {
      * @return position d'une forme
      */
     private Point choisirForme() {
-        // TODO test choisirForme
         return new Point(alea(0, 5), alea(0, 5));
     }
 
@@ -208,18 +209,22 @@ public class JeuMemoire implements Memorisable {
      * @return
      */
     private String ajouterEspaces(int nombre, String message) {
-        // TODO test ajouterEspaces
-        String espace = null;
+        String espace = "";
         for (int i = 0; i < nombre; i++) {
-            espace = espace + " ";
+            espace += " ";
         }
         return message + espace;
     }
 
+    /**
+     * Retourne le nombre d'espace requis pour atteindre la longueur de la chaine
+     * requis
+     * a utiliser avec la methode ajouterEspace()
+     */
     private int getNbrEspace(String texte) {
         int nbr = texte.length();
         if (nbr != LONGUEUR_CHAINE) {
-            Math.abs(nbr = nbr - LONGUEUR_CHAINE);
+            nbr = Math.abs(nbr -= LONGUEUR_CHAINE);
         }
         return nbr;
     }
@@ -231,16 +236,16 @@ public class JeuMemoire implements Memorisable {
      */
     @Override
     public String toString() {
-        // TODO a tester
-        String val = null;
+        String out = "";
+        String formeStr = null;
 
         for (int i = 0; i < getGrille().length; i++) {
-            for (int j = 0; j < getGrille().length; j++) {
-                val = ajouterEspaces(getNbrEspace(getGrille()[i][j].toStringCourt()),
-                        getGrille()[i][j].toStringCourt()) + "|";
+            for (int j = 0; j < getGrille()[i].length; j++) {
+                formeStr = getGrille()[i][j].toStringCourt();
+                out += ajouterEspaces(getNbrEspace(formeStr), formeStr) + "|";
             }
-            val = "\n";
+            out += "\n";
         }
-        return val;
+        return out;
     }
 }
